@@ -4,714 +4,880 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
 
 <style>
-  /*
-   * Layout: single narrow column, sticky nav, section-based scroll
-   * Palette: warm off-white / deep ink, Penn State navy accent
-   * Type: Instrument Serif (display) + Instrument Sans (body)
-   */
-  :root {
-    --bg:           #F6F6F3;
-    --fg:           #18181B;
-    --fg-muted:     #6B6B74;
-    --accent:       #1E407C;
-    --accent-pale:  #E7EDF7;
-    --border:       #E2E2DC;
-    --serif:        'Instrument Serif', Georgia, serif;
-    --sans:         'Instrument Sans', system-ui, sans-serif;
-  }
+/*
+* Layout: single narrow column, sticky nav, section-based scroll
+* Palette: warm off-white / deep ink, Penn State navy accent
+* Type: Instrument Serif (display) + Instrument Sans (body)
+*/
+:root {
+--bg: #F6F6F3;
+--fg: #18181B;
+--fg-muted: #6B6B74;
+--accent: #1E407C;
+--accent-pale: #E7EDF7;
+--border: #E2E2DC;
+--serif: 'Instrument Serif', Georgia, serif;
+--sans: 'Instrument Sans', system-ui, sans-serif;
+}
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg:          #111115;
-      --fg:          #EAEAE6;
-      --fg-muted:    #888893;
-      --accent:      #5B8FCC;
-      --accent-pale: #17233A;
-      --border:      #27272D;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg:          #111115;
-    --fg:          #EAEAE6;
-    --fg-muted:    #888893;
-    --accent:      #5B8FCC;
-    --accent-pale: #17233A;
-    --border:      #27272D;
-    color-scheme: dark;
-  }
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+--bg: #111115;
+--fg: #EAEAE6;
+--fg-muted: #888893;
+--accent: #5B8FCC;
+--accent-pale: #17233A;
+--border: #27272D;
+color-scheme: dark;
+}
+}
+:root[data-theme="dark"] {
+--bg: #111115;
+--fg: #EAEAE6;
+--fg-muted: #888893;
+--accent: #5B8FCC;
+--accent-pale: #17233A;
+--border: #27272D;
+color-scheme: dark;
+}
 
-  *, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--sans);
-    font-size: 1rem;
-    line-height: 1.7;
-    margin: 0;
-    padding-inline: max(1.5rem, env(safe-area-inset-left, 1.5rem));
-    padding-block: 0;
-  }
+body {
+background: var(--bg);
+color: var(--fg);
+font-family: var(--sans);
+font-size: 1rem;
+line-height: 1.7;
+margin: 0;
+padding-inline: max(1.5rem, env(safe-area-inset-left, 1.5rem));
+padding-block: 0;
+}
 
-  /* ── Nav ── */
-  nav {
-    position: sticky;
-    top: env(safe-area-inset-top, 0px);
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    z-index: 20;
-  }
-  .nav-inner {
-    max-width: 700px;
-    margin-inline: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-block: 1rem;
-    gap: 1rem;
-  }
-  .nav-name {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    color: var(--fg);
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-  .nav-links {
-    list-style: none;
-    margin: 0; padding: 0;
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .nav-links a {
-    color: var(--fg-muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.025em;
-    transition: color 0.15s;
-  }
-  .nav-links a:hover,
-  .nav-links a:focus-visible { color: var(--fg); }
+/* ── Nav ── */
+nav {
+position: sticky;
+top: env(safe-area-inset-top, 0px);
+background: var(--bg);
+border-bottom: 1px solid var(--border);
+z-index: 20;
+}
+.nav-inner {
+max-width: 700px;
+margin-inline: auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-block: 1rem;
+gap: 1rem;
+}
+.nav-name {
+font-family: var(--serif);
+font-size: 1.05rem;
+color: var(--fg);
+text-decoration: none;
+flex-shrink: 0;
+}
+.nav-links {
+list-style: none;
+margin: 0; padding: 0;
+display: flex;
+gap: 1.5rem;
+flex-wrap: wrap;
+}
+.nav-links a {
+color: var(--fg-muted);
+text-decoration: none;
+font-size: 0.85rem;
+letter-spacing: 0.025em;
+transition: color 0.15s;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible { color: var(--fg); }
 
-  /* ── Main container ── */
-  main { max-width: 700px; margin-inline: auto; }
+/* ── Main container ── */
+main { max-width: 700px; margin-inline: auto; }
 
-  section {
-    padding-block: 4rem;
-    border-bottom: 1px solid var(--border);
-  }
-  section:last-of-type { border-bottom: none; }
+section {
+padding-block: 4rem;
+border-bottom: 1px solid var(--border);
+}
+section:last-of-type { border-bottom: none; }
 
-  /* ── Hero ── */
-  .hero { padding-top: 5.5rem; padding-bottom: 4.5rem; }
+/* ── Hero ── */
+.hero { padding-top: 5.5rem; padding-bottom: 4.5rem; }
 
-  .eyebrow {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.25rem;
-    display: block;
-  }
+.eyebrow {
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(--accent);
+margin-bottom: 1.25rem;
+display: block;
+}
 
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(2.4rem, 6vw, 3.6rem);
-    line-height: 1.1;
-    font-weight: 400;
-    margin: 0 0 1.5rem;
-    text-wrap: balance;
-  }
-  h1 em { font-style: italic; }
+h1 {
+font-family: var(--serif);
+font-size: clamp(2.4rem, 6vw, 3.6rem);
+line-height: 1.1;
+font-weight: 400;
+margin: 0 0 1.5rem;
+text-wrap: balance;
+}
+h1 em { font-style: italic; }
 
-  .hero-intro {
-    font-size: 1.1rem;
-    color: var(--fg-muted);
-    max-width: 54ch;
-    margin-bottom: 2rem;
-    line-height: 1.7;
-  }
+.hero-intro {
+font-size: 1.1rem;
+color: var(--fg-muted);
+max-width: 54ch;
+margin-bottom: 2rem;
+line-height: 1.7;
+}
 
-  .award-badge {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    background: var(--accent-pale);
-    border-left: 3px solid var(--accent);
-    padding: 0.5rem 0.875rem;
-    border-radius: 0 3px 3px 0;
-    font-size: 0.82rem;
-    color: var(--fg);
-    font-weight: 500;
-    margin-bottom: 2rem;
-    max-width: 44ch;
-    line-height: 1.5;
-  }
-  .award-badge svg { flex-shrink: 0; margin-top: 2px; }
+.award-badge {
+display: inline-flex;
+align-items: flex-start;
+gap: 0.5rem;
+background: var(--accent-pale);
+border-left: 3px solid var(--accent);
+padding: 0.5rem 0.875rem;
+border-radius: 0 3px 3px 0;
+font-size: 0.82rem;
+color: var(--fg);
+font-weight: 500;
+margin-bottom: 2rem;
+max-width: 44ch;
+line-height: 1.5;
+}
+.award-badge svg { flex-shrink: 0; margin-top: 2px; }
 
-  .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.525rem 1.1rem;
-    border-radius: 3px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-decoration: none;
-    letter-spacing: 0.01em;
-    transition: opacity 0.15s, box-shadow 0.15s;
-  }
-  .btn:hover { opacity: 0.82; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-outline { border: 1px solid var(--border); color: var(--fg); }
+.hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.btn {
+display: inline-flex;
+align-items: center;
+gap: 0.35rem;
+padding: 0.525rem 1.1rem;
+border-radius: 3px;
+font-size: 0.875rem;
+font-weight: 500;
+text-decoration: none;
+letter-spacing: 0.01em;
+transition: opacity 0.15s, box-shadow 0.15s;
+}
+.btn:hover { opacity: 0.82; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-outline { border: 1px solid var(--border); color: var(--fg); }
 
-  /* ── Section headings ── */
-  h2 {
-    font-family: var(--serif);
-    font-size: 1.65rem;
-    font-weight: 400;
-    margin: 0 0 1.5rem;
-    text-wrap: balance;
-    line-height: 1.2;
-  }
+/* ── Section headings ── */
+h2 {
+font-family: var(--serif);
+font-size: 1.65rem;
+font-weight: 400;
+margin: 0 0 1.5rem;
+text-wrap: balance;
+line-height: 1.2;
+}
 
-  h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin: 0 0 0.3rem;
-    line-height: 1.4;
-  }
+h3 {
+font-size: 0.95rem;
+font-weight: 600;
+margin: 0 0 0.3rem;
+line-height: 1.4;
+}
 
-  p { margin: 0 0 1rem; }
-  p:last-child { margin-bottom: 0; }
+p { margin: 0 0 1rem; }
+p:last-child { margin-bottom: 0; }
 
-  /* ── Research ── */
-  .research-body { color: var(--fg); }
+/* ── Research ── */
+.research-body { color: var(--fg); }
 
-  .methods-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    margin: 1.5rem 0 0.625rem;
-  }
+.methods-label {
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(--fg-muted);
+margin: 1.5rem 0 0.625rem;
+}
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .tag {
-    font-size: 0.78rem;
-    padding: 0.25rem 0.6rem;
-    background: var(--accent-pale);
-    color: var(--accent);
-    border-radius: 2px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-  }
+.tags {
+display: flex;
+flex-wrap: wrap;
+gap: 0.4rem;
+}
+.tag {
+font-size: 0.78rem;
+padding: 0.25rem 0.6rem;
+background: var(--accent-pale);
+color: var(--accent);
+border-radius: 2px;
+font-weight: 500;
+letter-spacing: 0.01em;
+}
 
-  /* ── Publications ── */
-  .pub-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .pub-item {
-    display: grid;
-    grid-template-columns: 5rem 1fr;
-    gap: 0.875rem;
-    padding-block: 1.25rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .pub-item:last-child { border-bottom: none; }
-  .pub-year {
-    font-size: 0.8rem;
-    color: var(--fg-muted);
-    padding-top: 0.15rem;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.02em;
-  }
-  .pub-body h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin: 0 0 0.25rem;
-    line-height: 1.45;
-    text-wrap: balance;
-  }
-  .pub-body p {
-    font-size: 0.85rem;
-    color: var(--fg-muted);
-    margin: 0;
-    line-height: 1.5;
-  }
-  .pub-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.5rem;
-    border-radius: 2px;
-    margin-top: 0.4rem;
-  }
-  .pub-badge-award { background: var(--accent-pale); color: var(--accent); }
-  .pub-badge-forthcoming { background: var(--accent-pale); color: var(--accent); }
+/* ── Publications ── */
+.pub-list {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+.pub-item {
+display: grid;
+grid-template-columns: 5rem 1fr;
+gap: 0.875rem;
+padding-block: 1.25rem;
+border-bottom: 1px solid var(--border);
+}
+.pub-item:last-child { border-bottom: none; }
+.pub-year {
+font-size: 0.8rem;
+color: var(--fg-muted);
+padding-top: 0.15rem;
+font-variant-numeric: tabular-nums;
+letter-spacing: 0.02em;
+}
+.pub-body h3 {
+font-size: 0.95rem;
+font-weight: 600;
+margin: 0 0 0.25rem;
+line-height: 1.45;
+text-wrap: balance;
+}
+.pub-body p {
+font-size: 0.85rem;
+color: var(--fg-muted);
+margin: 0;
+line-height: 1.5;
+}
+.pub-badge {
+display: inline-flex;
+align-items: center;
+gap: 0.3rem;
+font-size: 0.72rem;
+font-weight: 600;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+padding: 0.2rem 0.5rem;
+border-radius: 2px;
+margin-top: 0.4rem;
+}
+.pub-badge-award { background: var(--accent-pale); color: var(--accent); }
+.pub-badge-forthcoming { background: var(--accent-pale); color: var(--accent); }
 
-  /* ── Projects ── */
-  .projects-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .project-card {
-    padding-block: 2rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .project-card:first-child { padding-top: 0; }
-  .project-card:last-child { border-bottom: none; }
-  .project-meta {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    margin-bottom: 0.5rem;
-  }
-  .project-card h3 {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin: 0 0 0.6rem;
-  }
-  .project-card p {
-    font-size: 0.925rem;
-    color: var(--fg-muted);
-    margin: 0 0 1rem;
-    line-height: 1.65;
-    max-width: 60ch;
-  }
-  .project-links {
-    display: flex;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.875rem;
-  }
-  .project-link {
-    font-size: 0.875rem;
-    color: var(--accent);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-  .project-link:hover { text-decoration: underline; }
+/* ── Projects ── */
+.projects-grid {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+.project-card {
+padding-block: 2rem;
+border-bottom: 1px solid var(--border);
+}
+.project-card:first-child { padding-top: 0; }
+.project-card:last-child { border-bottom: none; }
+.project-meta {
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(--fg-muted);
+margin-bottom: 0.5rem;
+}
+.project-card h3 {
+font-family: var(--serif);
+font-size: 1.2rem;
+font-weight: 400;
+margin: 0 0 0.6rem;
+}
+.project-card p {
+font-size: 0.925rem;
+color: var(--fg-muted);
+margin: 0 0 1rem;
+line-height: 1.65;
+max-width: 60ch;
+}
+.project-links {
+display: flex;
+gap: 1.25rem;
+flex-wrap: wrap;
+margin-bottom: 0.875rem;
+}
+.project-link {
+font-size: 0.875rem;
+color: var(--accent);
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 0.3rem;
+}
+.project-link:hover { text-decoration: underline; }
 
-  /* ── Timeline ── */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-  }
-  .tl-item {
-    display: grid;
-    grid-template-columns: 7rem 1fr;
-    gap: 0.875rem;
-    padding-block: 1.125rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .tl-item:last-child { border-bottom: none; }
-  .tl-year {
-    font-size: 0.8rem;
-    color: var(--fg-muted);
-    padding-top: 0.15rem;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.02em;
-    line-height: 1.4;
-  }
-  .tl-body h3 { font-size: 0.9rem; }
-  .tl-body p {
-    font-size: 0.85rem;
-    color: var(--fg-muted);
-    margin: 0.15rem 0 0;
-    line-height: 1.5;
-  }
+/* ── Timeline ── */
+.timeline {
+display: flex;
+flex-direction: column;
+}
+.tl-item {
+display: grid;
+grid-template-columns: 7rem 1fr;
+gap: 0.875rem;
+padding-block: 1.125rem;
+border-bottom: 1px solid var(--border);
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-year {
+font-size: 0.8rem;
+color: var(--fg-muted);
+padding-top: 0.15rem;
+font-variant-numeric: tabular-nums;
+letter-spacing: 0.02em;
+line-height: 1.4;
+}
+.tl-body h3 { font-size: 0.9rem; }
+.tl-body p {
+font-size: 0.85rem;
+color: var(--fg-muted);
+margin: 0.15rem 0 0;
+line-height: 1.5;
+}
 
-  /* ── Contact ── */
-  .contact-intro {
-    font-size: 1.05rem;
-    max-width: 50ch;
-    color: var(--fg-muted);
-    margin-bottom: 2rem;
-  }
-  .contact-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .contact-row {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    font-size: 0.9rem;
-  }
-  .contact-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    min-width: 5.5rem;
-  }
-  .contact-value { color: var(--fg); }
-  .contact-value a { color: var(--accent); text-decoration: none; }
-  .contact-value a:hover { text-decoration: underline; }
+/* ── Contact ── */
+.contact-intro {
+font-size: 1.05rem;
+max-width: 50ch;
+color: var(--fg-muted);
+margin-bottom: 2rem;
+}
+.contact-rows {
+display: flex;
+flex-direction: column;
+gap: 0.75rem;
+}
+.contact-row {
+display: flex;
+align-items: baseline;
+gap: 0.75rem;
+font-size: 0.9rem;
+}
+.contact-label {
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(--fg-muted);
+min-width: 5.5rem;
+}
+.contact-value { color: var(--fg); }
+.contact-value a { color: var(--accent); text-decoration: none; }
+.contact-value a:hover { text-decoration: underline; }
 
-  /* ── Footer ── */
-  footer {
-    max-width: 700px;
-    margin-inline: auto;
-    padding-block: 2rem;
-    font-size: 0.78rem;
-    color: var(--fg-muted);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+/* ── Footer ── */
+footer {
+max-width: 700px;
+margin-inline: auto;
+padding-block: 2rem;
+font-size: 0.78rem;
+color: var(--fg-muted);
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 1rem;
+flex-wrap: wrap;
+}
 
-  /* ── Responsive ── */
-  @media (max-width: 520px) {
-    .nav-links { gap: 0.875rem; }
-    .tl-item, .course { grid-template-columns: 1fr; gap: 0.2rem; }
-    .tl-year, .course-code { padding-top: 0; }
-    .hero { padding-top: 3.5rem; }
-    section { padding-block: 3rem; }
-  }
+/* ── Responsive ── */
+@media (max-width: 520px) {
+.nav-links { gap: 0.875rem; }
+.tl-item, .course { grid-template-columns: 1fr; gap: 0.2rem; }
+.tl-year, .course-code { padding-top: 0; }
+.hero { padding-top: 3.5rem; }
+section { padding-block: 3rem; }
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+@media (prefers-reduced-motion: reduce) {
+* { transition: none !important; }
+}
+
+/* ── Live Demo button ── */
+.rp-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 7px 16px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  cursor: pointer;
+  transition: opacity .15s, transform .1s;
+  font-family: inherit;
+  text-decoration: none;
+}
+.rp-demo-btn:hover {
+  opacity: .88;
+  transform: translateY(-1px);
+}
+.rp-demo-btn svg {
+  flex-shrink: 0;
+}
+
+/* ── Modal overlay ── */
+#rp-demo-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+#rp-demo-overlay.open {
+  display: flex;
+}
+#rp-demo-modal {
+  position: relative;
+  width: min(96vw, 1180px);
+  height: min(92vh, 840px);
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+}
+#rp-demo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #0f1117;
+  color: #fff;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  letter-spacing: .6px;
+  flex-shrink: 0;
+}
+#rp-demo-label {
+  opacity: .8;
+}
+#rp-demo-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: .7;
+  transition: opacity .15s;
+}
+#rp-demo-close:hover { opacity: 1; }
+#rp-demo-frame {
+  flex: 1;
+  border: none;
+  width: 100%;
+}
 </style>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a class="nav-name" href="#top">Rickey Patel</a>
-    <ul class="nav-links">
-      <li><a href="#research">Research</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
+<div class="nav-inner">
+<a class="nav-name" href="#top">Rickey Patel</a>
+<ul class="nav-links">
+<li><a href="#research">Research</a></li>
+<li><a href="#publications">Publications</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
 </nav>
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
-    <span class="eyebrow">Penn State University · D.Eng. Candidate</span>
-    <h1>Rickey Patel</h1>
-    <p class="hero-intro">
-      I study how artificial intelligence is reshaping the workforce and labor markets.
-      My work combines large-scale job posting data, NLP, and GCP-native pipelines to
-      surface how AI is changing the skills employers need — and who gets left out.
-      I hold an M.S. in Information Science from Penn State (2025) and am pursuing a
-      D.Eng. advised by Dr. Satish M. Srinivasan.
-    </p>
-    <div class="award-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" color="var(--accent)" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-      2025 NABET Best Paper Award — AI's impact on healthcare workforce
-    </div>
-    <div class="hero-links">
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-      <a class="btn btn-outline" href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        GitHub
-      </a>
-      <a class="btn btn-outline" href="mailto:rpp5069@gmail.com">
-        rpp5069@gmail.com
-      </a>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+<span class="eyebrow">Penn State University · D.Eng. Candidate</span>
+<h1>Rickey Patel</h1>
+<p class="hero-intro">
+I study how artificial intelligence is reshaping the workforce and labor markets.
+My work combines large-scale job posting data, NLP, and GCP-native pipelines to
+surface how AI is changing the skills employers need — and who gets left out.
+I hold an M.S. in Information Science from Penn State (2025) and am pursuing a
+D.Eng. advised by Dr. Satish M. Srinivasan.
+</p>
+<div class="award-badge">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" color="var(--accent)" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+2025 NABET Best Paper Award — AI's impact on healthcare workforce
+</div>
+<div class="hero-links">
+<a class="btn btn-primary" href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+LinkedIn
+</a>
+<a class="btn btn-outline" href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12c0-5.523-4.477-10-10-10z"/></svg>
+GitHub
+</a>
+<a class="btn btn-outline" href="mailto:rpp5069@gmail.com">
+rpp5069@gmail.com
+</a>
+</div>
+</section>
 
-  <!-- RESEARCH -->
-  <section id="research">
-    <h2>Research</h2>
-    <div class="research-body">
-      <p>
-        My doctoral research, advised by Dr. Satish M. Srinivasan, examines AI's role in labor market
-        transformation. I build production ETL pipelines on GCP (BigQuery, Dataflow, Cloud Storage)
-        to collect and analyze longitudinal employer skill demand data, applying BERTopic and LDA
-        to extract occupational skill signals and identify curriculum gaps between what institutions
-        teach and what the labor market actually needs.
-      </p>
-      <p>
-        A parallel research thread focuses on the digital labor market for spiritual facilitation
-        roles — chaplains, clergy, and pastoral staff. Drawing on IRS, Census, USDA, and SerpAPI
-        data across national, state, and metro architectures, I found an inverse correlation of
-        r = −0.402 (p = 0.038) between digital labor market participation and household income
-        across 27 states, pointing to persistent structural inequities in who benefits from
-        digital labor platforms.
-      </p>
-      <p>
-        Earlier work on healthcare workforce equity — how clinical AI reshapes the skill profiles
-        of roles from diagnostics to telemedicine — produced a 2025 NABET Best Paper Award
-        co-authored with Dr. Srinivasan. That project also developed an XAI ethics-by-design
-        framework with fairness audits and real-time streaming pipelines.
-      </p>
+<!-- RESEARCH -->
+<section id="research">
+<h2>Research</h2>
+<div class="research-body">
+<p>
+My doctoral research, advised by Dr. Satish M. Srinivasan, examines AI's role in labor market
+transformation. I build production ETL pipelines on GCP (BigQuery, Dataflow, Cloud Storage)
+to collect and analyze longitudinal employer skill demand data, applying BERTopic and LDA
+to extract occupational skill signals and identify curriculum gaps between what institutions
+teach and what the labor market actually needs.
+</p>
+<p>
+A parallel research thread focuses on the digital labor market for spiritual facilitation
+roles — chaplains, clergy, and pastoral staff. Drawing on IRS, Census, USDA, and SerpAPI
+data across national, state, and metro architectures, I found an inverse correlation of
+r = −0.402 (p = 0.038) between digital labor market participation and household income
+across 27 states, pointing to persistent structural inequities in who benefits from
+digital labor platforms.
+</p>
+<p>
+Earlier work on healthcare workforce equity — how clinical AI reshapes the skill profiles
+of roles from diagnostics to telemedicine — produced a 2025 NABET Best Paper Award
+co-authored with Dr. Srinivasan. That project also developed an XAI ethics-by-design
+framework with fairness audits and real-time streaming pipelines.
+</p>
 
-      <p class="methods-label">Methods &amp; Tools</p>
-      <div class="tags">
-        <span class="tag">BERTopic</span>
-        <span class="tag">LDA</span>
-        <span class="tag">NLP</span>
-        <span class="tag">XAI / SHAP</span>
-        <span class="tag">Deep Learning</span>
-        <span class="tag">Network Analysis</span>
-        <span class="tag">OLS Regression</span>
-        <span class="tag">Moran's I</span>
-        <span class="tag">GeoPandas</span>
-        <span class="tag">O*NET 24.2</span>
-        <span class="tag">BigQuery</span>
-        <span class="tag">Dataflow</span>
-        <span class="tag">Vertex AI</span>
-        <span class="tag">Kafka</span>
-        <span class="tag">Spark</span>
-        <span class="tag">Python</span>
-        <span class="tag">R</span>
-        <span class="tag">Power BI</span>
-      </div>
-    </div>
-  </section>
+<p class="methods-label">Methods &amp; Tools</p>
+<div class="tags">
+<span class="tag">BERTopic</span>
+<span class="tag">LDA</span>
+<span class="tag">NLP</span>
+<span class="tag">XAI / SHAP</span>
+<span class="tag">Deep Learning</span>
+<span class="tag">Network Analysis</span>
+<span class="tag">OLS Regression</span>
+<span class="tag">Moran's I</span>
+<span class="tag">GeoPandas</span>
+<span class="tag">O*NET 24.2</span>
+<span class="tag">BigQuery</span>
+<span class="tag">Dataflow</span>
+<span class="tag">Vertex AI</span>
+<span class="tag">Kafka</span>
+<span class="tag">Spark</span>
+<span class="tag">Python</span>
+<span class="tag">R</span>
+<span class="tag">Power BI</span>
+</div>
+</div>
+</section>
 
-  <!-- PUBLICATIONS -->
-  <section id="publications">
-    <h2>Publications</h2>
-    <div class="pub-list">
+<!-- PUBLICATIONS -->
+<section id="publications">
+<h2>Publications</h2>
+<div class="pub-list">
 
-      <div class="pub-item">
-        <div class="pub-year">2026</div>
-        <div class="pub-body">
-          <h3>Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare</h3>
-          <p>National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026</p>
-          <span class="pub-badge pub-badge-forthcoming">Presenting 2026</span>
-        </div>
-      </div>
+<div class="pub-item">
+<div class="pub-year">2026</div>
+<div class="pub-body">
+<h3>Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare</h3>
+<p>National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026</p>
+<span class="pub-badge pub-badge-forthcoming">Presenting 2026</span>
+</div>
+</div>
 
-      <div class="pub-item">
-        <div class="pub-year">2026</div>
-        <div class="pub-body">
-          <h3>Impact and Current State of Artificial Intelligence in the Religious Market</h3>
-          <p>National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026</p>
-          <span class="pub-badge pub-badge-forthcoming">Presenting 2026</span>
-        </div>
-      </div>
+<div class="pub-item">
+<div class="pub-year">2026</div>
+<div class="pub-body">
+<h3>Impact and Current State of Artificial Intelligence in the Religious Market</h3>
+<p>National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026</p>
+<span class="pub-badge pub-badge-forthcoming">Presenting 2026</span>
+</div>
+</div>
 
-      <div class="pub-item">
-        <div class="pub-year">2025</div>
-        <div class="pub-body">
-          <h3>Impact of AI in Healthcare</h3>
-          <p>National Association for Business, Economics, and Technology (NABET) Annual Conference · Co-authored with Dr. Satish M. Srinivasan</p>
-          <span class="pub-badge pub-badge-award">🏆 Best Paper Award</span>
-        </div>
-      </div>
+<div class="pub-item">
+<div class="pub-year">2025</div>
+<div class="pub-body">
+<h3>Impact of AI in Healthcare</h3>
+<p>National Association for Business, Economics, and Technology (NABET) Annual Conference · Co-authored with Dr. Satish M. Srinivasan</p>
+<span class="pub-badge pub-badge-award">🏆 Best Paper Award</span>
+</div>
+</div>
 
-    </div>
-  </section>
+</div>
+</section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
+<!-- PROJECTS -->
+<section id="projects">
+<h2>Projects</h2>
+<div class="projects-grid">
 
-      <div class="project-card">
-        <p class="project-meta">GCP Pipeline · In Production</p>
-        <h3>Job Postings Intelligence Pipeline</h3>
-        <p>
-          A fully GCP-native pipeline collecting job postings across CS, MBA, Data Analytics,
-          and AI domains from USAJobs and Jooble, scoring relevance, and mapping every role to
-          O*NET 24.2 competency frameworks. Migrated from a Google Colab notebook to Cloud Run,
-          BigQuery, and Cloud Scheduler, with a nine-phase interactive analytics dashboard
-          and GitHub Actions auto-deploy.
-        </p>
-        <div class="project-links">
-          <a class="project-link" href="https://github.com/rpp5069-cpu/job-pipeline" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            GitHub
-          </a>
-        </div>
-        <div class="tags">
-          <span class="tag">Cloud Run</span>
-          <span class="tag">BigQuery</span>
-          <span class="tag">Dataflow</span>
-          <span class="tag">Vertex AI</span>
-          <span class="tag">O*NET</span>
-          <span class="tag">Plotly</span>
-        </div>
-      </div>
+<div class="project-card">
+<p class="project-meta">GCP Pipeline · In Production</p>
+<h3>Job Postings Intelligence Pipeline</h3>
+<p>
+A fully GCP-native pipeline collecting job postings across CS, MBA, Data Analytics,
+and AI domains from USAJobs and Jooble, scoring relevance, and mapping every role to
+O*NET 24.2 competency frameworks. Migrated from a Google Colab notebook to Cloud Run,
+BigQuery, and Cloud Scheduler, with a nine-phase interactive analytics dashboard
+and GitHub Actions auto-deploy.
+</p>
+<div class="project-links">
+<a class="project-link" href="https://github.com/rpp5069-cpu/job-pipeline" target="_blank" rel="noopener">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12c0-5.523-4.477-10-10-10z"/></svg>
+GitHub
+</a>
+</div>
+<div class="tags">
+<span class="tag">Cloud Run</span>
+<span class="tag">BigQuery</span>
+<span class="tag">Dataflow</span>
+<span class="tag">Vertex AI</span>
+<span class="tag">O*NET</span>
+<span class="tag">Plotly</span>
+</div>
+<button class="rp-demo-btn" data-tab="gcp" onclick="rpOpenDemo(this)">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+       stroke-linejoin="round" aria-hidden="true">
+    <polygon points="5 3 19 12 5 21 5 3"/>
+  </svg>
+  Live Demo
+</button>
+</div>
 
-      <div class="project-card">
-        <p class="project-meta">Independent Research · 2024 – Present</p>
-        <h3>Digital Labor Market Analysis — Spiritual Facilitation</h3>
-        <p>
-          A multi-source pipeline integrating IRS, Census, USDA, and SerpAPI data to track
-          digital labor market participation among chaplains, pastors, clergy, and related roles
-          across national, state, and metro geographies. Found an inverse correlation of
-          r = −0.402 (p = 0.038) between digital labor ratio and household income across
-          27 states — revealing structural inequities in who benefits from digital labor platforms.
-        </p>
-        <div class="tags">
-          <span class="tag">BigQuery</span>
-          <span class="tag">GCS</span>
-          <span class="tag">SerpAPI</span>
-          <span class="tag">Census Data</span>
-          <span class="tag">OLS Regression</span>
-          <span class="tag">Chart.js</span>
-        </div>
-      </div>
+<div class="project-card">
+<p class="project-meta">Independent Research · 2024 – Present</p>
+<h3>Digital Labor Market Analysis — Spiritual Facilitation</h3>
+<p>
+A multi-source pipeline integrating IRS, Census, USDA, and SerpAPI data to track
+digital labor market participation among chaplains, pastors, clergy, and related roles
+across national, state, and metro geographies. Found an inverse correlation of
+r = −0.402 (p = 0.038) between digital labor ratio and household income across
+27 states — revealing structural inequities in who benefits from digital labor platforms.
+</p>
+<div class="tags">
+<span class="tag">BigQuery</span>
+<span class="tag">GCS</span>
+<span class="tag">SerpAPI</span>
+<span class="tag">Census Data</span>
+<span class="tag">OLS Regression</span>
+<span class="tag">Chart.js</span>
+</div>
+<button class="rp-demo-btn" data-tab="rjld" onclick="rpOpenDemo(this)">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+       stroke-linejoin="round" aria-hidden="true">
+    <polygon points="5 3 19 12 5 21 5 3"/>
+  </svg>
+  Live Demo
+</button>
+</div>
 
-      <div class="project-card">
-        <p class="project-meta">Course Development · The Pennsylvania State University</p>
-        <h3>CSC 894: Healthcare AI Capstone</h3>
-        <p>
-          A graduate-level Computer Science capstone course built around a real healthcare AI
-          application deployed on Google Cloud Platform. Students work end-to-end with production
-          GCP services, culminating in a deployed AI system with equity and clinical stewardship
-          considerations built into the design rubric.
-        </p>
-        <div class="tags">
-          <span class="tag">GCP</span>
-          <span class="tag">Healthcare AI</span>
-          <span class="tag">Instructional Design</span>
-          <span class="tag">Clinical Stewardship</span>
-        </div>
-      </div>
+<div class="project-card">
+<p class="project-meta">Course Development · The Pennsylvania State University</p>
+<h3>CSC 894: Healthcare AI Capstone</h3>
+<p>
+A graduate-level Computer Science capstone course built around a real healthcare AI
+application deployed on Google Cloud Platform. Students work end-to-end with production
+GCP services, culminating in a deployed AI system with equity and clinical stewardship
+considerations built into the design rubric.
+</p>
+<div class="tags">
+<span class="tag">GCP</span>
+<span class="tag">Healthcare AI</span>
+<span class="tag">Instructional Design</span>
+<span class="tag">Clinical Stewardship</span>
+</div>
+<button class="rp-demo-btn" data-tab="roar" onclick="rpOpenDemo(this)">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+       stroke-linejoin="round" aria-hidden="true">
+    <polygon points="5 3 19 12 5 21 5 3"/>
+  </svg>
+  Live Demo
+</button>
+</div>
 
-    </div>
-  </section>
+</div>
+</section>
 
-  <!-- TIMELINE -->
-  <section id="timeline">
-    <h2>Timeline</h2>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-year">2026</div>
-        <div class="tl-body">
-          <h3>Two Papers Accepted · NABET 2026</h3>
-          <p>Presenting "Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare" and "Impact and Current State of Artificial Intelligence in the Religious Market"</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">2025</div>
-        <div class="tl-body">
-          <h3>NABET Best Paper Award</h3>
-          <p>AI's impact on healthcare workforce — co-authored with Dr. Satish M. Srinivasan</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">Jun 2025</div>
-        <div class="tl-body">
-          <h3>Graduate Certificate · Business Process Integration · Penn State Great Valley</h3>
-          <p>IT system analysis, architecture, design, and implementation for business process needs</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">Jun 2025</div>
-        <div class="tl-body">
-          <h3>Graduate Certificate · Cyber Threat Analytics &amp; Prevention · Penn State Great Valley</h3>
-          <p>Cyberattack analysis, cyber law, vulnerability assessment, threat detection and mitigation</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">Aug 2025</div>
-        <div class="tl-body">
-          <h3>M.S., Information Science · Penn State</h3>
-          <p>GPA 3.73 · Capstone: Real-time clinical decision support using Kafka, Flink, Spark, and Deep Learning</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">2023 – Present</div>
-        <div class="tl-body">
-          <h3>Research Assistant to Dr. Satish M. Srinivasan · The Pennsylvania State University</h3>
-          <p>AI in the workforce and labor markets · D.Eng. dissertation research</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">Aug 2025 – Present</div>
-        <div class="tl-body">
-          <h3>D.Eng. Candidate · The Pennsylvania State University</h3>
-          <p>AI &amp; Workforce Analytics · Graduate Certificate in Engineering Leadership &amp; Innovation Management (in progress)</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">2020 – 2024</div>
-        <div class="tl-body">
-          <h3>Patient Services Associate / Care Coordinator · Asembia · ASPN Pharmacies</h3>
-          <p>Specialty medication access coordination in full HIPAA compliance; reduced prescription processing time 30% and prior authorization turnaround 25%</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-year">2021</div>
-        <div class="tl-body">
-          <h3>B.S., Information Sciences &amp; Technology · Penn State Abington</h3>
-          <p>GPA 3.89 · Concentration: Human Physiology &amp; Biology</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- TIMELINE -->
+<section id="timeline">
+<h2>Timeline</h2>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-year">2026</div>
+<div class="tl-body">
+<h3>Two Papers Accepted · NABET 2026</h3>
+<p>Presenting "Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare" and "Impact and Current State of Artificial Intelligence in the Religious Market"</p>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">2025</div>
+<div class="tl-body">
+<h3>NABET Best Paper Award</h3>
+<p>AI's impact on healthcare workforce — co-authored with Dr. Satish M. Srinivasan</p>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">Jun 2025</div>
+<div class="tl-body">
+<h3>Graduate Certificate · Business Process Integration · Penn State Great Valley</h3>
+<p>IT system analysis, architecture, design, and implementation for business process needs</p>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">Jun 2025</div>
+<div class="tl-body">
+<h3>Graduate Certificate · Cyber Threat Analytics &amp; Prevention · Penn State Great Valley</h3>
+<p>Cyberattack analysis, cyber law, vulnerability assessment, threat detection and mitigation</p>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">Aug 2025</div>
+<div class="tl-body">
+<h3>M.S., Information Science · Penn State</h3>
+<p>GPA 3.73 · Capstone: Real-time clinical decision support using Kafka, Flink, Spark, and Deep Learning</p>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">2023 – Present</div>
+<div class="tl-body">
+<h3>Research Assistant to Dr. Satish M. Srinivasan · The Pennsylvania State University</h3>
+<p>AI in the workforce and labor markets · D.Eng. dissertation research</p>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">Aug 2025 – Present</div>
+<div class="tl-body">
+<h3>D.Eng. Candidate · The Pennsylvania State University</h3>
+<p>AI &amp; Workforce Analytics · Graduate Certificate in Engineering Leadership &amp; Innovation Management (in progress)</p>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">2020 – 2024</div>
+<div class="tl-body">
+<h3>Patient Services Associate / Care Coordinator · Asembia · ASPN Pharmacies</h3>
+<p>Specialty medication access coordination in full HIPAA compliance; reduced prescription processing time 30% and prior authorization turnaround 25%</p>
+</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">2021</div>
+<div class="tl-body">
+<h3>B.S., Information Sciences &amp; Technology · Penn State Abington</h3>
+<p>GPA 3.89 · Concentration: Human Physiology &amp; Biology</p>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p class="contact-intro">
-      I'm happy to talk about AI and labor markets, research collaboration,
-      or graduate coursework in applied AI. Say hi.
-    </p>
-    <div class="contact-rows">
-      <div class="contact-row">
-        <span class="contact-label">Email</span>
-        <span class="contact-value">rpp5069@gmail.com</span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">LinkedIn</span>
-        <span class="contact-value"><a href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">linkedin.com/in/rickey-patel</a></span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">GitHub</span>
-        <span class="contact-value"><a href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">github.com/rpp5069-cpu</a></span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">Location</span>
-        <span class="contact-value">Scranton, PA</span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">Credentials</span>
-        <span class="contact-value"><a href="https://www.credly.com/users/rickey-patel" target="_blank" rel="noopener">credly.com/users/rickey-patel</a></span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">Affiliation</span>
-        <span class="contact-value">The Pennsylvania State University · D.Eng. Program</span>
-      </div>
-    </div>
-  </section>
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
+<p class="contact-intro">
+I'm happy to talk about AI and labor markets, research collaboration,
+or graduate coursework in applied AI. Say hi.
+</p>
+<div class="contact-rows">
+<div class="contact-row">
+<span class="contact-label">Email</span>
+<span class="contact-value">rpp5069@gmail.com</span>
+</div>
+<div class="contact-row">
+<span class="contact-label">LinkedIn</span>
+<span class="contact-value"><a href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">linkedin.com/in/rickey-patel</a></span>
+</div>
+<div class="contact-row">
+<span class="contact-label">GitHub</span>
+<span class="contact-value"><a href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">github.com/rpp5069-cpu</a></span>
+</div>
+<div class="contact-row">
+<span class="contact-label">Location</span>
+<span class="contact-value">Scranton, PA</span>
+</div>
+<div class="contact-row">
+<span class="contact-label">Credentials</span>
+<span class="contact-value"><a href="https://www.credly.com/users/rickey-patel" target="_blank" rel="noopener">credly.com/users/rickey-patel</a></span>
+</div>
+<div class="contact-row">
+<span class="contact-label">Affiliation</span>
+<span class="contact-value">The Pennsylvania State University · D.Eng. Program</span>
+</div>
+</div>
+</section>
 
 </main>
 
 <footer>
-  <span>Rickey Patel · Penn State University</span>
-  <span>Updated 2026</span>
+<span>Rickey Patel · Penn State University</span>
+<span>Updated 2026</span>
 </footer>
+
+<!-- Modal overlay -->
+<div id="rp-demo-overlay" role="dialog" aria-modal="true"
+     aria-label="Research Dashboard Demo"
+     onclick="if(event.target===this)rpCloseDemo()">
+  <div id="rp-demo-modal">
+    <div id="rp-demo-header">
+      <span id="rp-demo-label">D.ENG. RESEARCH DASHBOARD</span>
+      <button id="rp-demo-close" onclick="rpCloseDemo()"
+              aria-label="Close demo">&#x2715;</button>
+    </div>
+    <iframe id="rp-demo-frame"
+            title="D.Eng. Research Dashboard"
+            allow="fullscreen"
+            loading="lazy"
+            src=""></iframe>
+  </div>
+</div>
+
+<script>
+(function () {
+  var LABELS = {
+    gcp:  'JOB POSTINGS PIPELINE  ·  GCP / DATAFLOW / BIGQUERY',
+    rjld: 'RELIGIOUS JOB LISTINGS  ·  ROBERTA / VERTEX AI',
+    roar: 'HEALTHCARE AI CAPSTONE  ·  ROAR HPC / DUCKDB'
+  };
+
+  window.rpOpenDemo = function (btn) {
+    var tab   = btn.dataset.tab;
+    var label = LABELS[tab] || 'RESEARCH DASHBOARD';
+    var frame = document.getElementById('rp-demo-frame');
+    var overlay = document.getElementById('rp-demo-overlay');
+
+    document.getElementById('rp-demo-label').textContent =
+      'D.ENG. RESEARCH DASHBOARD  ·  ' + label;
+
+    frame.src = '/research-demo.html#' + tab;
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.rpCloseDemo = function () {
+    var overlay = document.getElementById('rp-demo-overlay');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function () {
+      document.getElementById('rp-demo-frame').src = '';
+    }, 300);
+  };
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') rpCloseDemo();
+  });
+})();
+</script>
 
 </body></html>
