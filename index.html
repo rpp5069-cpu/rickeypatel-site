@@ -71,6 +71,49 @@ align-items: center;
 padding-block: 1rem;
 gap: 1rem;
 }
+
+/* ── Nav controls (theme + language) ── */
+.nav-controls {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+flex-shrink: 0;
+}
+.lang-switcher {
+display: flex;
+border: 1px solid var(--border);
+border-radius: 4px;
+overflow: hidden;
+}
+.lang-btn {
+background: none;
+border: none;
+border-right: 1px solid var(--border);
+color: var(--fg-muted);
+font-size: 0.72rem;
+font-weight: 600;
+padding: 0.28rem 0.5rem;
+cursor: pointer;
+font-family: var(--sans);
+transition: background 0.15s, color 0.15s;
+line-height: 1;
+}
+.lang-btn:last-child { border-right: none; }
+.lang-btn:hover { background: var(--accent-pale); color: var(--fg); }
+.lang-btn.active { background: var(--accent); color: #fff; }
+.theme-btn {
+background: none;
+border: 1px solid var(--border);
+border-radius: 4px;
+color: var(--fg-muted);
+cursor: pointer;
+padding: 0.28rem 0.5rem;
+display: flex;
+align-items: center;
+transition: background 0.15s, color 0.15s;
+line-height: 1;
+}
+.theme-btn:hover { background: var(--accent-pale); color: var(--fg); }
 .nav-name {
 font-family: var(--serif);
 font-size: 1.05rem;
@@ -492,11 +535,22 @@ section { padding-block: 3rem; }
 <div class="nav-inner">
 <a class="nav-name" href="#top">Rickey Patel</a>
 <ul class="nav-links">
-<li><a href="#research">Research</a></li>
-<li><a href="#publications">Publications</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#research" data-i18n="nav.research">Research</a></li>
+<li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
+<li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+<li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
 </ul>
+<div class="nav-controls">
+  <div class="lang-switcher" role="group" aria-label="Language">
+    <button class="lang-btn active" id="lang-en" onclick="setLang('en')" aria-pressed="true">EN</button>
+    <button class="lang-btn" id="lang-gu" onclick="setLang('gu')" aria-pressed="false">ગુ</button>
+    <button class="lang-btn" id="lang-hi" onclick="setLang('hi')" aria-pressed="false">हि</button>
+  </div>
+  <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg id="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg id="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</div>
 </div>
 </nav>
 
@@ -504,9 +558,9 @@ section { padding-block: 3rem; }
 
 <!-- HERO -->
 <section class="hero">
-<span class="eyebrow">Penn State University · D.Eng. Candidate</span>
+<span class="eyebrow" data-i18n="hero.eyebrow">Penn State University · D.Eng. Candidate</span>
 <h1>Rickey Patel</h1>
-<p class="hero-intro">
+<p class="hero-intro" data-i18n="hero.intro">
 I study how artificial intelligence is reshaping the workforce and labor markets.
 My work combines large-scale job posting data, NLP, and GCP-native pipelines to
 surface how AI is changing the skills employers need — and who gets left out.
@@ -515,7 +569,7 @@ D.Eng. advised by Dr. Satish M. Srinivasan.
 </p>
 <div class="award-badge">
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" color="var(--accent)" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-2025 NABET Best Paper Award — AI's impact on healthcare workforce
+<span data-i18n="hero.award">2025 NABET Best Paper Award — AI's impact on healthcare workforce</span>
 </div>
 <div class="hero-links">
 <a class="btn btn-primary" href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">
@@ -534,16 +588,16 @@ rpp5069@gmail.com
 
 <!-- RESEARCH -->
 <section id="research">
-<h2>Research</h2>
+<h2 data-i18n="research.h2">Research</h2>
 <div class="research-body">
-<p>
+<p data-i18n="research.p1">
 My doctoral research, advised by Dr. Satish M. Srinivasan, examines AI's role in labor market
 transformation. I build production ETL pipelines on GCP (BigQuery, Dataflow, Cloud Storage)
 to collect and analyze longitudinal employer skill demand data, applying BERTopic and LDA
 to extract occupational skill signals and identify curriculum gaps between what institutions
 teach and what the labor market actually needs.
 </p>
-<p>
+<p data-i18n="research.p2">
 A parallel research thread focuses on the digital labor market for spiritual facilitation
 roles — chaplains, clergy, and pastoral staff. Drawing on IRS, Census, USDA, and SerpAPI
 data across national, state, and metro architectures, I found an inverse correlation of
@@ -551,14 +605,14 @@ r = −0.402 (p = 0.038) between digital labor market participation and househol
 across 27 states, pointing to persistent structural inequities in who benefits from
 digital labor platforms.
 </p>
-<p>
+<p data-i18n="research.p3">
 Earlier work on healthcare workforce equity — how clinical AI reshapes the skill profiles
 of roles from diagnostics to telemedicine — produced a 2025 NABET Best Paper Award
 co-authored with Dr. Srinivasan. That project also developed an XAI ethics-by-design
 framework with fairness audits and real-time streaming pipelines.
 </p>
 
-<p class="methods-label">Methods &amp; Tools</p>
+<p class="methods-label" data-i18n="research.methods">Methods &amp; Tools</p>
 <div class="tags">
 <span class="tag">BERTopic</span>
 <span class="tag">LDA</span>
@@ -584,7 +638,7 @@ framework with fairness audits and real-time streaming pipelines.
 
 <!-- PUBLICATIONS -->
 <section id="publications">
-<h2>Publications</h2>
+<h2 data-i18n="publications.h2">Publications</h2>
 <div class="pub-list">
 
 <div class="pub-item">
@@ -619,13 +673,13 @@ framework with fairness audits and real-time streaming pipelines.
 
 <!-- PROJECTS -->
 <section id="projects">
-<h2>Projects</h2>
+<h2 data-i18n="projects.h2">Projects</h2>
 <div class="projects-grid">
 
 <div class="project-card">
-<p class="project-meta">GCP Pipeline · In Production</p>
-<h3>Job Postings Intelligence Pipeline</h3>
-<p>
+<p class="project-meta" data-i18n="proj1.meta">GCP Pipeline · In Production</p>
+<h3 data-i18n="proj1.h3">Job Postings Intelligence Pipeline</h3>
+<p data-i18n="proj1.desc">
 A fully GCP-native pipeline collecting job postings across CS, MBA, Data Analytics,
 and AI domains from USAJobs and Jooble, scoring relevance, and mapping every role to
 O*NET 24.2 competency frameworks. Migrated from a Google Colab notebook to Cloud Run,
@@ -657,9 +711,9 @@ GitHub
 </div>
 
 <div class="project-card">
-<p class="project-meta">Independent Research · 2024 – Present</p>
-<h3>Digital Labor Market Analysis — Spiritual Facilitation</h3>
-<p>
+<p class="project-meta" data-i18n="proj2.meta">Independent Research · 2024 – Present</p>
+<h3 data-i18n="proj2.h3">Digital Labor Market Analysis — Spiritual Facilitation</h3>
+<p data-i18n="proj2.desc">
 A multi-source pipeline integrating IRS, Census, USDA, and SerpAPI data to track
 digital labor market participation among chaplains, pastors, clergy, and related roles
 across national, state, and metro geographies. Found an inverse correlation of
@@ -685,9 +739,9 @@ r = −0.402 (p = 0.038) between digital labor ratio and household income across
 </div>
 
 <div class="project-card">
-<p class="project-meta">Course Development · The Pennsylvania State University</p>
-<h3>CSC 894: Healthcare AI Capstone</h3>
-<p>
+<p class="project-meta" data-i18n="proj3.meta">Course Development · The Pennsylvania State University</p>
+<h3 data-i18n="proj3.h3">CSC 894: Healthcare AI Capstone</h3>
+<p data-i18n="proj3.desc">
 A graduate-level Computer Science capstone course built around a real healthcare AI
 application deployed on Google Cloud Platform. Students work end-to-end with production
 GCP services, culminating in a deployed AI system with equity and clinical stewardship
@@ -706,7 +760,7 @@ considerations built into the design rubric.
 
 <!-- TIMELINE -->
 <section id="timeline">
-<h2>Timeline</h2>
+<h2 data-i18n="timeline.h2">Timeline</h2>
 <div class="timeline">
 <div class="tl-item">
 <div class="tl-year">2026</div>
@@ -776,14 +830,14 @@ considerations built into the design rubric.
 
 <!-- CONTACT -->
 <section id="contact">
-<h2>Contact</h2>
-<p class="contact-intro">
+<h2 data-i18n="contact.h2">Contact</h2>
+<p class="contact-intro" data-i18n="contact.intro">
 I'm happy to talk about AI and labor markets, research collaboration,
 or graduate coursework in applied AI. Say hi.
 </p>
 <div class="contact-rows">
 <div class="contact-row">
-<span class="contact-label">Email</span>
+<span class="contact-label" data-i18n="contact.email">Email</span>
 <span class="contact-value">rpp5069@gmail.com</span>
 </div>
 <div class="contact-row">
@@ -795,16 +849,16 @@ or graduate coursework in applied AI. Say hi.
 <span class="contact-value"><a href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">github.com/rpp5069-cpu</a></span>
 </div>
 <div class="contact-row">
-<span class="contact-label">Location</span>
+<span class="contact-label" data-i18n="contact.location">Location</span>
 <span class="contact-value">Scranton, PA</span>
 </div>
 <div class="contact-row">
-<span class="contact-label">Credentials</span>
+<span class="contact-label" data-i18n="contact.credentials">Credentials</span>
 <span class="contact-value"><a href="https://www.credly.com/users/rickey-patel" target="_blank" rel="noopener">credly.com/users/rickey-patel</a></span>
 </div>
 <div class="contact-row">
-<span class="contact-label">Affiliation</span>
-<span class="contact-value">The Pennsylvania State University · D.Eng. Program</span>
+<span class="contact-label" data-i18n="contact.affiliation">Affiliation</span>
+<span class="contact-value" data-i18n="contact.affiliation.val">The Pennsylvania State University · D.Eng. Program</span>
 </div>
 </div>
 </section>
@@ -835,41 +889,181 @@ or graduate coursework in applied AI. Say hi.
 </div>
 
 <script>
+// ── Demo modal ────────────────────────────────────────────────────────────
 (function () {
   var LABELS = {
     gcp:  'JOB POSTINGS PIPELINE  ·  GCP / DATAFLOW / BIGQUERY',
     rjld: 'RELIGIOUS JOB LISTINGS  ·  ROBERTA / VERTEX AI',
     roar: 'HEALTHCARE AI CAPSTONE  ·  ROAR HPC / DUCKDB'
   };
-
   window.rpOpenDemo = function (btn) {
-    var tab   = btn.dataset.tab;
-    var label = LABELS[tab] || 'RESEARCH DASHBOARD';
-    var frame = document.getElementById('rp-demo-frame');
-    var overlay = document.getElementById('rp-demo-overlay');
-
-    document.getElementById('rp-demo-label').textContent =
-      'D.ENG. RESEARCH DASHBOARD  ·  ' + label;
-
-    frame.src = '/research-demo.html#' + tab;
-
-    overlay.classList.add('open');
+    var tab = btn.dataset.tab, label = LABELS[tab] || 'RESEARCH DASHBOARD';
+    document.getElementById('rp-demo-label').textContent = 'D.ENG. RESEARCH DASHBOARD  ·  ' + label;
+    document.getElementById('rp-demo-frame').src = '/research-demo.html#' + tab;
+    document.getElementById('rp-demo-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   };
-
   window.rpCloseDemo = function () {
-    var overlay = document.getElementById('rp-demo-overlay');
-    overlay.classList.remove('open');
+    document.getElementById('rp-demo-overlay').classList.remove('open');
     document.body.style.overflow = '';
-    setTimeout(function () {
-      document.getElementById('rp-demo-frame').src = '';
-    }, 300);
+    setTimeout(function () { document.getElementById('rp-demo-frame').src = ''; }, 300);
   };
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') rpCloseDemo();
-  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') rpCloseDemo(); });
 })();
+
+// ── Theme toggle ──────────────────────────────────────────────────────────
+(function () {
+  var saved = localStorage.getItem('rp-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+  function isDark() {
+    var t = document.documentElement.getAttribute('data-theme');
+    return t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  function syncIcon() {
+    document.getElementById('icon-moon').hidden = isDark();
+    document.getElementById('icon-sun').hidden  = !isDark();
+  }
+  window.toggleTheme = function () {
+    var next = isDark() ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('rp-theme', next);
+    syncIcon();
+  };
+  document.addEventListener('DOMContentLoaded', syncIcon);
+})();
+
+// ── i18n ──────────────────────────────────────────────────────────────────
+var I18N = {
+  en: {
+    'nav.research':    'Research',
+    'nav.publications':'Publications',
+    'nav.projects':    'Projects',
+    'nav.contact':     'Contact',
+    'hero.eyebrow':    'Penn State University · D.Eng. Candidate',
+    'hero.intro':      'I study how artificial intelligence is reshaping the workforce and labor markets. My work combines large-scale job posting data, NLP, and GCP-native pipelines to surface how AI is changing the skills employers need — and who gets left out. I hold an M.S. in Information Science from Penn State (2025) and am pursuing a D.Eng. advised by Dr. Satish M. Srinivasan.',
+    'hero.award':      '2025 NABET Best Paper Award — AI\'s impact on healthcare workforce',
+    'research.h2':     'Research',
+    'research.p1':     'My doctoral research, advised by Dr. Satish M. Srinivasan, examines AI\'s role in labor market transformation. I build production ETL pipelines on GCP (BigQuery, Dataflow, Cloud Storage) to collect and analyze longitudinal employer skill demand data, applying BERTopic and LDA to extract occupational skill signals and identify curriculum gaps between what institutions teach and what the labor market actually needs.',
+    'research.p2':     'A parallel research thread focuses on the digital labor market for spiritual facilitation roles — chaplains, clergy, and pastoral staff. Drawing on IRS, Census, USDA, and SerpAPI data across national, state, and metro architectures, I found an inverse correlation of r = −0.402 (p = 0.038) between digital labor market participation and household income across 27 states, pointing to persistent structural inequities in who benefits from digital labor platforms.',
+    'research.p3':     'Earlier work on healthcare workforce equity — how clinical AI reshapes the skill profiles of roles from diagnostics to telemedicine — produced a 2025 NABET Best Paper Award co-authored with Dr. Srinivasan. That project also developed an XAI ethics-by-design framework with fairness audits and real-time streaming pipelines.',
+    'research.methods':'Methods & Tools',
+    'publications.h2': 'Publications',
+    'projects.h2':     'Projects',
+    'proj1.meta':      'GCP Pipeline · In Production',
+    'proj1.h3':        'Job Postings Intelligence Pipeline',
+    'proj1.desc':      'A fully GCP-native pipeline collecting job postings across CS, MBA, Data Analytics, and AI domains from USAJobs and Jooble, scoring relevance, and mapping every role to O*NET 24.2 competency frameworks. Migrated from a Google Colab notebook to Cloud Run, BigQuery, and Cloud Scheduler, with a nine-phase interactive analytics dashboard and GitHub Actions auto-deploy.',
+    'proj2.meta':      'Independent Research · 2024 – Present',
+    'proj2.h3':        'Digital Labor Market Analysis — Spiritual Facilitation',
+    'proj2.desc':      'A multi-source pipeline integrating IRS, Census, USDA, and SerpAPI data to track digital labor market participation among chaplains, pastors, clergy, and related roles across national, state, and metro geographies. Found an inverse correlation of r = −0.402 (p = 0.038) between digital labor ratio and household income across 27 states — revealing structural inequities in who benefits from digital labor platforms.',
+    'proj3.meta':      'Course Development · The Pennsylvania State University',
+    'proj3.h3':        'CSC 894: Healthcare AI Capstone',
+    'proj3.desc':      'A graduate-level Computer Science capstone course built around a real healthcare AI application deployed on Google Cloud Platform. Students work end-to-end with production GCP services, culminating in a deployed AI system with equity and clinical stewardship considerations built into the design rubric.',
+    'timeline.h2':     'Timeline',
+    'contact.h2':      'Contact',
+    'contact.intro':   'I\'m happy to talk about AI and labor markets, research collaboration, or graduate coursework in applied AI. Say hi.',
+    'contact.email':   'Email',
+    'contact.location':'Location',
+    'contact.credentials':'Credentials',
+    'contact.affiliation':'Affiliation',
+    'contact.affiliation.val':'The Pennsylvania State University · D.Eng. Program'
+  },
+
+  gu: {
+    'nav.research':    'સંshoadhan',
+    'nav.publications':'પ્rak aśanō',
+    'nav.projects':    'prōjekṭ',
+    'nav.contact':     'saṃparka',
+    'hero.eyebrow':    'Penn State University · D.Eng. ઉmēdvār',
+    'hero.intro':      'હ uṃ abhyās karuṃ chuṃ kē AI (kṛtrim buddhi) kaī rītē kāryabaḷ anē śram bajārōnē āpaī rahyuṃ chē. Māruṃ kām mōṭā-pāyā par naukrī-ḍēṭā, NLP, anē GCP pāipalāina vāparī nē, AI nē kāraṇē niyōktāōnē joītā skillōmā badalāv — anē koṇ bāhar rahē — tē ujāgar karē chē. Penn State (M.S., 2025), Dr. Satish M. Srinivasan nā mārgadarśan hēṭhaḷ D.Eng. khaṭ̌ chuṃ.',
+    'hero.award':      '2025 NABET śrēṣṭha prabandha — ārōgya sēvā kāryabaḷ par AI nī asar',
+    'research.h2':     'saṃśōdhana',
+    'research.p1':     'Dr. Satish M. Srinivasan nā mārgadarśan hēṭhaḷ, māruṃ ḍōkṭaral saṃśōdhana AI nī labor market parivartan māṃ bhamikaō tapāsē chē. GCP (BigQuery, Dataflow, Cloud Storage) par ETL pāipalāinō banāvī, BERTopic anē LDA ṭhī occupational skill signal anē curricular gaps ōḷakhavāmāṃ āvē chē.',
+    'research.p2':     'ēk sāmāntar saṃśōdhan dhārā ādhi-yātmik sahāyatā bhūmikāōnā dijīṭal śrama bājār par dhyān kēndrit karē chē — chaplains, clergy, anē pastoral staff. IRS, Census, USDA, anē SerpAPI ḍēṭāno upayōg karī, 27 rājyōmāṃ dijīṭal śrama bhāgīdārī anē gharēlū āvak vacchē r = −0.402 (p = 0.038) nō viprit sambandha mēḷavyō — jē structural asamānatā ōḷakhāvē chē.',
+    'research.p3':     'ārōgya sēvā kāryabaḷ sāmājikatā par agāu kāmē — clinical AI ḍāyagnōsṭiks ṭhī ṭēlimēḍisin sudhī bhūmikāōnā skill prōfailnē kaīrītē badlē chē — 2025 NABET Best Paper Award Dr. Srinivasan sāthē āpyō. tē prōjekṭmāṃ XAI ethics-by-design framework pana banavelī hatī.',
+    'research.methods':'padhdhatiō anē sādhanaō',
+    'publications.h2': 'prakāśanō',
+    'projects.h2':     'prōjekṭ',
+    'proj1.meta':      'GCP Pipeline · utpādanmāṃ',
+    'proj1.h3':        'naukrī pōsṭingō intelligence pipeline',
+    'proj1.desc':      'USAJobs anē Jooble ṭhī CS, MBA, Data Analytics, anē AI domainōmāṃ naukrī pōsṭingō ēkaṭṭhī karatī, relevance score āpatī, anē darēk bhūmikānē O*NET 24.2 sāthē māp karatī pūrī-rītē GCP-ādhārit pipeline. Cloud Run, BigQuery, anē Cloud Scheduler par māigrēṭ karaī, interactive analytics dashboard anē GitHub Actions ṭhī auto-deploy.',
+    'proj2.meta':      'svatantra saṃśōdhana · 2024 – hāl',
+    'proj2.h3':        'dijīṭal śrama bājār viślēṣaṇa — ādhi-yātmik sahāyatā',
+    'proj2.desc':      'IRS, Census, USDA, anē SerpAPI ḍēṭānē jōḍatī multi-source pipeline jē national, state, anē metro stharē chaplains, pastors, clergy, anē sambanddhit bhūmikāōnī dijīṭal śrama bhāgīdārī track karē chē. 27 rājyōmāṃ dijīṭal labor ratio anē gharēlū āvak vacchē r = −0.402 (p = 0.038) nō viprit sambandha mēḷavyō.',
+    'proj3.meta':      'abhyāsakram vikās · The Pennsylvania State University',
+    'proj3.h3':        'CSC 894: Healthcare AI Capstone',
+    'proj3.desc':      'GCP par ḍiplōy karaēlī vastavī healthcare AI application ādhārit graduate-stharīya Computer Science capstone abhyāsakram. Vidhyārthīō production GCP sevāōthī ēnd-ṭu-ēnd kām karē chē, anē design rubriko māṃ samānatā anē clinical stewardship vicharō sāthē ḍiplōy karaēla AI system māṃ pariṇamē chē.',
+    'timeline.h2':     'samaya-rēkhā',
+    'contact.h2':      'saṃparka',
+    'contact.intro':   'AI anē labor markets, saṃśōdhana sahayōga, athavā applied AI māṃ graduate abhyāsakram viśē vāt karavā khūśī chuṃ. namastē kahō.',
+    'contact.email':   'ī-mēil',
+    'contact.location':'sthāna',
+    'contact.credentials':'pramāṇa-patra',
+    'contact.affiliation':'saṃsthā',
+    'contact.affiliation.val':'The Pennsylvania State University · D.Eng. kāryakrama'
+  },
+
+  hi: {
+    'nav.research':    'शोध',
+    'nav.publications':'प्रकाशन',
+    'nav.projects':    'परियोजनाएँ',
+    'nav.contact':     'संपर्क',
+    'hero.eyebrow':    'Penn State University · D.Eng. उम्मीदवार',
+    'hero.intro':      'मैं अध्ययन करता हूँ कि AI (कृत्रिम बुद्धि) किस प्रकार कार्यबल और श्रम बाजारों को आकार दे रहा है। मेरा कार्य बड़े पैमाने पर नौकरी-डेटा, NLP, और GCP-आधारित पाइपलाइनों को जोड़कर यह उजागर करता है कि AI के कारण नियोक्ताओं की आवश्यक दक्षताएँ कैसे बदल रही हैं — और कौन पीछे रह जाता है। Penn State (M.S., 2025), Dr. Satish M. Srinivasan के मार्गदर्शन में D.Eng. कर रहा हूँ।',
+    'hero.award':      '2025 NABET सर्वश्रेष्ठ शोध-पत्र — स्वास्थ्य सेवा कार्यबल पर AI का प्रभाव',
+    'research.h2':     'शोध',
+    'research.p1':     'Dr. Satish M. Srinivasan के मार्गदर्शन में, मेरा डॉक्टरल शोध श्रम बाजार परिवर्तन में AI की भूमिका की जाँच करता है। GCP (BigQuery, Dataflow, Cloud Storage) पर उत्पादन ETL पाइपलाइन बनाकर, BERTopic और LDA से व्यावसायिक कौशल संकेत निकाले जाते हैं और संस्थाएँ जो पढ़ाती हैं तथा श्रम बाजार को जो चाहिए, उनके बीच की खाई पहचानी जाती है।',
+    'research.p2':     'एक समानांतर शोध-धारा आध्यात्मिक सहायता भूमिकाओं — chaplains, clergy, और pastoral staff — के डिजिटल श्रम बाजार पर केंद्रित है। IRS, Census, USDA, और SerpAPI डेटा का उपयोग करते हुए, 27 राज्यों में डिजिटल श्रम भागीदारी और घरेलू आय के बीच r = −0.402 (p = 0.038) का विपरीत सहसंबंध मिला — जो संरचनात्मक असमानता की ओर इशारा करता है।',
+    'research.p3':     'स्वास्थ्य सेवा कार्यबल समानता पर पूर्व कार्य — कैसे clinical AI डायग्नोस्टिक्स से टेलीमेडिसिन तक भूमिकाओं के कौशल प्रोफाइल को बदलता है — ने Dr. Srinivasan के साथ 2025 NABET Best Paper Award दिलाया। उस परियोजना में fairness audits और real-time streaming pipelines के साथ XAI ethics-by-design framework भी विकसित की गई।',
+    'research.methods':'विधियाँ और उपकरण',
+    'publications.h2': 'प्रकाशन',
+    'projects.h2':     'परियोजनाएँ',
+    'proj1.meta':      'GCP Pipeline · उत्पादन में',
+    'proj1.h3':        'नौकरी पोस्टिंग इंटेलिजेंस पाइपलाइन',
+    'proj1.desc':      'USAJobs और Jooble से CS, MBA, Data Analytics, और AI क्षेत्रों में नौकरी पोस्टिंग एकत्र करने, relevance score देने, और हर भूमिका को O*NET 24.2 से मानचित्रित करने वाली पूर्णतः GCP-आधारित पाइपलाइन। Cloud Run, BigQuery, और Cloud Scheduler पर माइग्रेट की गई, नौ-चरण इंटरैक्टिव analytics dashboard और GitHub Actions auto-deploy के साथ।',
+    'proj2.meta':      'स्वतंत्र शोध · 2024 – वर्तमान',
+    'proj2.h3':        'डिजिटल श्रम बाजार विश्लेषण — आध्यात्मिक सहायता',
+    'proj2.desc':      'IRS, Census, USDA, और SerpAPI डेटा को एकीकृत करने वाली multi-source pipeline जो राष्ट्रीय, राज्य और मेट्रो स्तर पर chaplains, pastors, clergy और संबंधित भूमिकाओं की डिजिटल श्रम भागीदारी को ट्रैक करती है। 27 राज्यों में डिजिटल labor ratio और घरेलू आय के बीच r = −0.402 (p = 0.038) का विपरीत सहसंबंध मिला।',
+    'proj3.meta':      'पाठ्यक्रम विकास · The Pennsylvania State University',
+    'proj3.h3':        'CSC 894: स्वास्थ्य सेवा AI Capstone',
+    'proj3.desc':      'Google Cloud Platform पर तैनात वास्तविक healthcare AI application पर आधारित graduate-स्तरीय Computer Science capstone पाठ्यक्रम। छात्र production GCP सेवाओं के साथ end-to-end कार्य करते हैं, जिसके परिणामस्वरूप design rubric में समानता और clinical stewardship विचारों के साथ एक तैनात AI system बनता है।',
+    'timeline.h2':     'समयरेखा',
+    'contact.h2':      'संपर्क',
+    'contact.intro':   'AI और श्रम बाजारों, शोध सहयोग, या applied AI में स्नातक पाठ्यक्रम के बारे में बात करने में मुझे खुशी होगी। नमस्ते कहें।',
+    'contact.email':   'ईमेल',
+    'contact.location':'स्थान',
+    'contact.credentials':'प्रमाण-पत्र',
+    'contact.affiliation':'संस्था',
+    'contact.affiliation.val':'The Pennsylvania State University · D.Eng. कार्यक्रम'
+  }
+};
+
+var _lang = localStorage.getItem('rp-lang') || 'en';
+
+window.setLang = function (lang) {
+  _lang = lang;
+  localStorage.setItem('rp-lang', lang);
+  ['en','gu','hi'].forEach(function (l) {
+    var btn = document.getElementById('lang-' + l);
+    if (!btn) return;
+    btn.classList.toggle('active', l === lang);
+    btn.setAttribute('aria-pressed', l === lang ? 'true' : 'false');
+  });
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n');
+    var val = I18N[lang] && I18N[lang][key];
+    if (val !== undefined) el.textContent = val;
+  });
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  setLang(_lang);
+  // also set active lang button correctly on load
+  ['en','gu','hi'].forEach(function (l) {
+    var btn = document.getElementById('lang-' + l);
+    if (btn) btn.classList.toggle('active', l === _lang);
+  });
+});
 </script>
 
 </body></html>
