@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quotes</title>
+  <meta name="description" content="A collection of quotes that have inspired me.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap">
+  <style>
+    /* Single column, max 660px, dark-first */
+    :root {
+      --bg: #111318;
+      --fg: #ddd8d0;
+      --fg-muted: #6b6762;
+      --fg-dim: #9b9590;
+      --accent: #7a9ab5;
+      --accent-faint: rgba(122, 154, 181, 0.18);
+      --border: rgba(122, 154, 181, 0.15);
+      --input-bg: rgba(255, 255, 255, 0.04);
+      --input-border: rgba(255, 255, 255, 0.07);
+      color-scheme: dark;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg: #f5f3ef;
+        --fg: #1e1c18;
+        --fg-muted: #8a867e;
+        --fg-dim: #6a6660;
+        --accent: #4d7a97;
+        --accent-faint: rgba(77, 122, 151, 0.1);
+        --border: rgba(77, 122, 151, 0.2);
+        --input-bg: rgba(0, 0, 0, 0.03);
+        --input-border: rgba(0, 0, 0, 0.09);
+        color-scheme: light;
+      }
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f5f3ef;
+      --fg: #1e1c18;
+      --fg-muted: #8a867e;
+      --fg-dim: #6a6660;
+      --accent: #4d7a97;
+      --accent-faint: rgba(77, 122, 151, 0.1);
+      --border: rgba(77, 122, 151, 0.2);
+      --input-bg: rgba(0, 0, 0, 0.03);
+      --input-border: rgba(0, 0, 0, 0.09);
+      color-scheme: light;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      padding-inline: 24px;
+      padding-block: 0;
+    }
+
+    .page {
+      max-width: 660px;
+      margin: 0 auto;
+      padding-block: 64px 96px;
+    }
+
+    /* Header */
+    .header { margin-bottom: 40px; }
+
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--fg);
+      margin: 0 0 12px;
+      text-wrap: balance;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--fg-muted);
+      margin: 0;
+    }
+
+    .meta-dot {
+      width: 2px; height: 2px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 48px;
+      align-items: center;
+    }
+
+    .search-wrap { position: relative; flex: 1; }
+
+    .search-icon {
+      position: absolute;
+      left: 13px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--fg-muted);
+      pointer-events: none;
+      display: flex;
+    }
+
+    #search {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 7px;
+      color: var(--fg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      padding: 10px 13px 10px 37px;
+      outline: none;
+      transition: border-color 0.15s;
+      appearance: none;
+    }
+
+    #search::placeholder { color: var(--fg-muted); }
+    #search:focus { border-color: var(--accent); }
+
+    .btn-random {
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 7px;
+      color: var(--fg-dim);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      padding: 10px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-random:hover {
+      color: var(--fg);
+      border-color: var(--accent);
+      background: var(--accent-faint);
+    }
+
+    /* Quote list */
+    .quotes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .quote-item {
+      padding-left: 20px;
+      border-left: 2px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .quote-item:hover { border-color: var(--accent); }
+
+    .quote-item.highlight {
+      border-color: var(--accent);
+      background: var(--accent-faint);
+      border-radius: 0 6px 6px 0;
+      padding-block: 4px;
+      margin-inline-start: -2px;
+      padding-inline-start: 22px;
+    }
+
+    .quote-text {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+      line-height: 1.8;
+      color: var(--fg);
+      margin: 0 0 8px;
+      white-space: pre-line;
+    }
+
+    .quote-attribution {
+      font-size: 0.8rem;
+      color: var(--fg-muted);
+      margin: 0;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+
+    .quote-attribution::before { content: '— '; font-style: normal; }
+
+    .empty {
+      display: none;
+      padding: 56px 0;
+      text-align: center;
+      color: var(--fg-muted);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    .empty p { margin: 0; }
+    .empty p + p { margin-top: 4px; color: var(--fg-dim); font-size: 0.8rem; }
+
+    @media (max-width: 420px) {
+      body { padding-inline: 16px; }
+      .page { padding-block: 40px 72px; }
+      .controls { flex-wrap: wrap; }
+      .btn-random { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .quote-item, .btn-random { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>quotes</h1>
+      <p class="meta">
+        Things I keep coming back to
+        <span class="meta-dot"></span>
+        <span id="count">17 quotes</span>
+      </p>
+    </header>
+
+    <div class="controls">
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </span>
+        <input type="search" id="search" placeholder="search quotes…" autocomplete="off" aria-label="Search quotes">
+      </div>
+      <button class="btn-random" id="btn-random" aria-label="Show a random quote">
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+        </svg>
+        shuffle
+      </button>
+    </div>
+
+    <div class="quotes-list" id="list" role="list"></div>
+    <div class="empty" id="empty">
+      <p>No quotes match that search.</p>
+      <p>Try a different word or phrase.</p>
+    </div>
+  </div>
+
+  <script>
+    const quotes = [
+      { text: "Everything around you that you call life was made up by people that were no smarter than you.", author: "Steve Jobs" },
+      { text: "Action produces information. If you're unsure of what to do, just do anything, even if it's the wrong thing. This will give you information about what you should actually be doing.\n\nSounds simple on the surface — the hard part is making it part of your every day working process.", author: "Brian Armstrong (Coinbase)" },
+      { text: "When I am, as it were, completely myself, entirely alone, and of good cheer — say, travelling in a carriage, or walking after a good meal, or during the night when I cannot sleep; it is on such occasions that my ideas flow best and most abundantly. Whence and how they come, I know not; nor can I force them.", author: "Wolfgang Amadeus Mozart" },
+      { text: "The wise man accepts his pain, endures it, but does not add to it by complaining.", author: "Marcus Aurelius" },
+      { text: "Embarrassment is an under-explored emotion. Go make a fool of yourself.", author: "Austin Butler" },
+      { text: "You need to be proud of your work, and your work needs to be worthy of pride.", author: "Mr. Mayfield (8th Grade History)" },
+      { text: "A lion doesn't concern itself with token counting.", author: "Peter Steinberger" },
+      { text: "But I do not account my life of any value nor as precious to myself, if only I may finish my course and the ministry that I received from the Lord Jesus, to testify to the gospel of the grace of God.", author: "Acts 20:24" },
+      { text: "You can just do things.", author: "Sam Altman" },
+      { text: "The unexamined life is not worth living. But the overexamined life is not worth living either.", author: "Socrates" },
+      { text: "How to be good at your job:\n— Realize one thing is actually made up of two separate things.\n— Instead of solving the direct problem, solve a broader problem.\n— Instead of implementing the thing, implement the thing that makes it easier to implement the thing.", author: "dax" },
+      { text: "The 4 qualities of a great career:\n1) I enjoy it\n2) I'm good at it\n3) I make good money\n4) I'm around fascinating people\n\nAnswer in reverse order:\n4) Where are fascinating people?\n3) In what ways can I make money with them?\n2) Which ones am I good at?\n1) Which ones do I enjoy?", author: "James Clear" },
+      { text: "When you're feeling, you're alive. The sun doesn't care whether the grass appreciates its rays — it just keeps on shining.", author: "Ethan Hawke" },
+      { text: "Patterns I've noticed in people who aren't necessarily unhappy, but aren't going anywhere:\n\n• Never learn anything new unless they're forced to\n• Don't set goals unless their survival makes them insecure\n• Talk about what's happening in the world rather than what they're working on\n• Aren't aware of any of this, and making them aware hurts more than it helps\n\nHard place to be.", author: "Dan Koe" },
+      { text: "This world was created by people no smarter than you and I.", author: "Steve Jobs" },
+      { text: "Leave a legacy. Be courageous.", author: "Charlie Kirk" },
+      { text: "Everything is computer.", author: "Donald Trump" }
+    ];
+
+    const list = document.getElementById('list');
+    const searchInput = document.getElementById('search');
+    const countEl = document.getElementById('count');
+    const emptyEl = document.getElementById('empty');
+    const btnRandom = document.getElementById('btn-random');
+
+    function plural(n) { return n === 1 ? '1 quote' : `${n} quotes`; }
+
+    function escapeHTML(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function escapeRe(str) { return str.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+    function render(filtered, highlightIndex = -1) {
+      list.innerHTML = '';
+      if (filtered.length === 0) {
+        emptyEl.style.display = 'block';
+        list.style.display = 'none';
+        countEl.textContent = '0 matches';
+        return;
+      }
+      emptyEl.style.display = 'none';
+      list.style.display = 'flex';
+
+      const q = searchInput.value.trim().toLowerCase();
+
+      filtered.forEach((quote, i) => {
+        const item = document.createElement('div');
+        item.className = 'quote-item' + (highlightIndex === i ? ' highlight' : '');
+        item.setAttribute('role', 'listitem');
+
+        let displayText = escapeHTML(quote.text);
+        if (q) {
+          const re = new RegExp(`(${escapeRe(q)})`, 'gi');
+          displayText = displayText.replace(re, '<mark style="background:var(--accent-faint);color:var(--accent);border-radius:2px;padding:0 1px">$1</mark>');
+        }
+
+        item.innerHTML = `
+          <p class="quote-text">${displayText}</p>
+          <p class="quote-attribution">${escapeHTML(quote.author)}</p>
+        `;
+        list.appendChild(item);
+      });
+
+      const label = q ? `${plural(filtered.length)} matching` : plural(quotes.length);
+      countEl.textContent = label;
+    }
+
+    function getFiltered() {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) return quotes;
+      return quotes.filter(qt =>
+        qt.text.toLowerCase().includes(q) || qt.author.toLowerCase().includes(q)
+      );
+    }
+
+    searchInput.addEventListener('input', () => render(getFiltered()));
+
+    let lastRandomIndex = -1;
+    btnRandom.addEventListener('click', () => {
+      const filtered = getFiltered();
+      if (filtered.length === 0) return;
+      let idx;
+      if (filtered.length === 1) { idx = 0; }
+      else { do { idx = Math.floor(Math.random() * filtered.length); } while (idx === lastRandomIndex); }
+      lastRandomIndex = idx;
+      render(filtered, idx);
+      setTimeout(() => {
+        const h = list.querySelector('.highlight');
+        if (h) h.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    });
+
+    render(quotes);
+  </script>
+</body>
+</html>
