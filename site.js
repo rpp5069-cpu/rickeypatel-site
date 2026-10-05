@@ -187,7 +187,7 @@ var I18N = {
     'ethics.desc':  'Developed as part of the CSC 894 capstone and informed by Engineering Leadership & Innovation Management training, this rubric operationalizes XAI ethics-by-design. It provides structured evaluation criteria for fairness audits, model explainability, and real-time pipeline oversight — translating abstract AI ethics principles into measurable engineering deliverables.',
     'engr.label':   'Certificate Program',
     'engr.h3':      'Engineering Leadership & Innovation Management',
-    'engr.desc':    'Currently pursuing this Graduate Certificate alongside the D.Eng. program at Penn State Great Valley. Focuses on translating advanced engineering execution into strategic organizational leadership — directly informing the design of the Clinical Stewardship Rubric and CSC 894 curriculum.',
+    'engr.desc':    'Currently pursuing this Graduate Certificate alongside the Doctor of Engineering program at Penn State. Focuses on translating advanced engineering execution into strategic organizational leadership — directly informing the design of the Clinical Stewardship Rubric and CSC 894 curriculum.',
     /* Contact page */
     'contact.page.h1':   'Contact & Collaboration',
     'contact.page.desc': 'Open to research collaboration, speaking engagements, and conversations about AI, labor markets, and data engineering.',
