@@ -75,25 +75,39 @@
   });
 })();
 
-// ── Contact form (mailto) ─────────────────────────────────────────────────
+// ── Contact form (Netlify Forms) ──────────────────────────────────────────
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('contact-form');
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name    = (form.elements['cf-name']        || {}).value || '';
-      var affil   = (form.elements['cf-affiliation'] || {}).value || '';
-      var inquiry = (form.elements['cf-inquiry']     || {}).value || 'General Inquiry';
-      var message = (form.elements['cf-message']     || {}).value || '';
-      var subject = encodeURIComponent('[' + inquiry + '] from ' + name);
-      var body    = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Affiliation: ' + affil + '\n' +
-        'Inquiry: ' + inquiry + '\n\n' +
-        message
-      );
-      window.location.href = 'mailto:rpp5069@gmail.com?subject=' + subject + '&body=' + body;
+      var statusEl = document.getElementById('cf-status');
+      var btn = form.querySelector('[type=submit]');
+      if (btn) btn.disabled = true;
+      if (statusEl) { statusEl.textContent = ''; statusEl.className = ''; }
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        if (statusEl) {
+          statusEl.textContent = (I18N[_lang] && I18N[_lang]['contact.success']) || 'Message sent — I\'ll be in touch.';
+          statusEl.className = 'cf-status-ok';
+        }
+        form.reset();
+      })
+      .catch(function () {
+        if (statusEl) {
+          statusEl.textContent = (I18N[_lang] && I18N[_lang]['contact.error']) || 'Something went wrong — please email rpp5069@gmail.com directly.';
+          statusEl.className = 'cf-status-err';
+        }
+      })
+      .finally(function () {
+        if (btn) btn.disabled = false;
+      });
     });
   });
 })();
@@ -111,7 +125,7 @@ var I18N = {
     'hero.tagline':    'Engineering the cloud pipelines and data models that uncover how artificial intelligence is reshaping the global workforce.',
     'hero.bio1':       'I am a D.Eng. Candidate at Penn State University specializing in AI and workforce analytics. My research combines large-scale employer demand data, natural language processing (NLP), and production-grade cloud architectures to identify how machine learning alters required occupational skill sets — and analyze who risks being left behind in the digital economy.',
     'hero.bio2':       'Advised by Dr. Satish M. Srinivasan, my doctoral work focuses on building fully automated, GCP-native ETL pipelines to trace longitudinal skill shifts across sectors ranging from healthcare delivery to digital religious labor platforms. I am passionate about bridging the gap between academic labor economics and enterprise software architecture, developing data solutions that champion equity, explainable AI (XAI), and clinical stewardship.',
-    'hero.award':      '2025 NABET Best Paper Award — AI\'s impact on healthcare workforce',
+    'hero.award':      '2025 NABET Best Paper Award — Impact of Artificial Intelligence in the Healthcare Sector',
     /* Credential ticker */
     'cred.deng':  'D.Eng. Candidate · Penn State',
     'cred.award': '🏆 NABET Best Paper Award 2025',
@@ -128,11 +142,11 @@ var I18N = {
     'pillar1.h3':    'Macro Labor Market Shifts',
     'pillar1.p1':    'My core doctoral work examines how AI adoption changes the composition of skills that employers actually demand. Using production ETL pipelines on GCP (BigQuery, Dataflow, Cloud Storage), I collect longitudinal job posting data from USAJobs and Jooble, then apply BERTopic and LDA to extract occupational skill signals across CS, MBA, Data Analytics, and AI domains.',
     'pillar1.p2':    'The central research question: as machine learning capabilities expand, which human competencies become scarcer, which become redundant, and which new hybrid skill clusters emerge? Every role is mapped to O*NET 24.2 competency frameworks to enable cross-sector, longitudinal comparisons.',
-    'pillar1.stat':  'Four domains · 12 O*NET competency families · Longitudinal since 2024',
+    'pillar1.stat':  'Four domains · 12 O*NET competency families · Longitudinal since 2025',
     'pillar2.label': 'Research Pillar 2',
     'pillar2.h3':    'Digital Labor Equity & Spiritual Ecosystems',
     'pillar2.p1':    'A parallel research thread investigates structural inequities in digital labor platform access among spiritual facilitation roles — chaplains, clergy, and pastoral staff. Drawing on IRS, Census, USDA, and SerpAPI data across national, state, and metro architectures, the analysis spans 27 U.S. states.',
-    'pillar2.p2':    'Key finding: an inverse correlation of r = −0.402 (p = 0.038) between digital labor market participation and household income — revealing that workers in lower-income regions are systematically under-represented on digital labor platforms, even when controlling for internet access.',
+    'pillar2.p2':    'Key finding: a significant inverse correlation (r = −0.402, p = 0.038) across 27 states: states with lower median household income show a higher share of digital spiritual-facilitation postings.',
     'pillar2.stat':  'r = −0.402 (p = 0.038) · 27 states · IRS + Census + USDA + SerpAPI',
     'pubindex.h2':   'Publications',
     /* Pub entries */
@@ -143,7 +157,7 @@ var I18N = {
     'pub4.h3':         'Architectural Patterns and Orchestration Frameworks in Multi-Agentic AI for Healthcare',
     'pub4.p':          'New Jersey Big Data Alliance (NJBDA) Annual Symposium',
     'pub4.badge':      'Lightning Talk 2026',
-    'pub3.h3':         'Impact of AI in Healthcare',
+    'pub3.h3':         'Impact of Artificial Intelligence in the Healthcare Sector',
     'pub3.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · Co-authored with Dr. Satish M. Srinivasan',
     'pub.forthcoming': 'Presenting 2026',
     'pub.award':       '🏆 Best Paper Award',
@@ -167,7 +181,7 @@ var I18N = {
     'teach.page.desc':    'Graduate-level course design and ethics framework development at the intersection of AI systems and human-centered engineering.',
     'csc894.label': 'Graduate Course · Penn State Great Valley',
     'csc894.h3':    'CSC 894: Healthcare AI Capstone',
-    'csc894.desc':  'A graduate-level Computer Science capstone built around a real healthcare AI application deployed end-to-end on Google Cloud Platform. Students move through the full production arc — data ingestion, model training, deployment, and monitoring — with equity and clinical stewardship considerations embedded directly in the design rubric.',
+    'csc894.desc':  'A graduate-level Computer Science capstone built around HealthRiskAI — a fictional application that processes healthcare claims data through a GCP pipeline. Students move through the full production arc — data ingestion, model training, deployment, and monitoring — with HIPAA compliance, equity, and clinical stewardship considerations embedded directly in the design rubric.',
     'ethics.label': 'Ethics Framework',
     'ethics.h3':    'Clinical Stewardship & Design Equity Rubric',
     'ethics.desc':  'Developed as part of the CSC 894 capstone and informed by Engineering Leadership & Innovation Management training, this rubric operationalizes XAI ethics-by-design. It provides structured evaluation criteria for fairness audits, model explainability, and real-time pipeline oversight — translating abstract AI ethics principles into measurable engineering deliverables.',
@@ -186,12 +200,17 @@ var I18N = {
     'contact.credentials': 'Credentials',
     'contact.affiliation': 'Affiliation',
     'contact.affiliation.val': 'The Pennsylvania State University · D.Eng. Program',
+    'contact.form.name':   'Name',
+    'contact.form.email':  'Email',
+    'contact.form.submit': 'Send Message',
+    'contact.success':     'Message sent — I\'ll be in touch.',
+    'contact.error':       'Something went wrong — please email rpp5069@gmail.com directly.',
     /* Timeline */
     'timeline.h2': 'Timeline',
     'tl1.h3': 'Two Papers Accepted · NABET 2026',
     'tl1.p':  'Presenting "Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare" and "Impact and Current State of Artificial Intelligence in the Religious Market"',
     'tl2.h3': 'NABET Best Paper Award',
-    'tl2.p':  'AI\'s impact on healthcare workforce — co-authored with Dr. Satish M. Srinivasan',
+    'tl2.p':  '"Impact of Artificial Intelligence in the Healthcare Sector" · co-authored with Dr. Satish M. Srinivasan',
     'tl3.h3': 'Graduate Certificate · Business Process Integration · Penn State Great Valley',
     'tl3.p':  'IT system analysis, architecture, design, and implementation for business process needs',
     'tl4.h3': 'Graduate Certificate · Cyber Threat Analytics & Prevention · Penn State Great Valley',
@@ -217,7 +236,7 @@ var I18N = {
     'hero.tagline':    'cloud pipelines અને data models engineer કરીને વૈશ્વિક workforce ને AI કઈ રીતે બદલી રહ્યું છે — તે ઉઘાડ.',
     'hero.bio1':       'હું Penn State University ખાતે AI અને workforce analytics માં વિશેષ D.Eng. ઉમેદવાર છું. મારું સંશોધન large-scale employer demand data, NLP, અને production-grade cloud architectures ને જોડીને ઓળખે છે કે machine learning occupational skill sets ને કઈ રીતે બદલે છે — અને ડિજિટલ અર્થવ્યવસ્થામાં કોણ પાછળ રહી જઈ શકે.',
     'hero.bio2':       'Dr. Satish M. Srinivasan ના માર્ગદર્શન હેઠળ, મારું doctoral work GCP-native ETL pipelines બનાવવા પર ધ્યાન આપે છે. Equity, XAI, અને clinical stewardship ને champion કરતા data solutions develop કરવો મારો ઉત્સાહ છે.',
-    'hero.award':      '૨૦૨૫ NABET શ્રેષ્ઠ સંશોધન-પત્ર — આરોગ્ય સેવા કાર્યયળ પર AI ની અસર',
+    'hero.award':      '૨૦૨૫ NABET શ્રેષ્ઠ સંશોધન-પત્ર — આરોગ્ય ક્ષેત્રમાં કૃત્રિમ બુદ્ધિની અસર',
     'cred.deng':  'D.Eng. ઉમેદવાર · Penn State',
     'cred.award': '🏆 NABET Best Paper Award 2025',
     'cred.ms':    'M.S. Information Science · GPA 3.73',
@@ -231,21 +250,28 @@ var I18N = {
     'pub4.h3': 'હેલ્થકેરમાં Multi-Agentic AI ના આર્કિટેક્ચરલ પેટર્ન અને ઓર્કેસ્ટ્રેશન ફ્રેમવર્ક',
     'pub4.p':  'New Jersey Big Data Alliance (NJBDA) Annual Symposium',
     'pub4.badge':      'Lightning Talk 2026',
-    'pub3.h3': 'આરોગ્ય સેવામાં AI ની અસર',
+    'pub3.h3': 'આરોગ્ય ક્ષેત્રમાં કૃત્રિમ બુદ્ધિની અસર',
     'pub3.p':  'National Association for Business, Economics, and Technology (NABET) Annual Conference · Dr. Satish M. Srinivasan સાથે સહ-લેખન',
     'pub.forthcoming': '૨૦૨૬ માં રજૂ',
     'pub.award':       '🏆 શ્રેષ્ઠ સંશોધન-પત્ર',
     'tl1.h3': 'બે સંશોધન-પત્ર સ્વીકૃત · NABET 2026',
     'tl1.p':  '"AI માં વિશ્વાસ બાંધવો..." અને "ધાર્મિક બજારમાં AI..." ૨૦૨૬ NABET Conference માં રજૂ',
     'tl2.h3': 'NABET શ્રેષ્ઠ સંશોધન-પત્ર',
-    'tl2.p':  'AI ની આરોગ્ય સેવા કાર્યયળ પર અસર — Dr. Satish M. Srinivasan સાથે સહ-લેખન',
+    'tl2.p':  '"Impact of Artificial Intelligence in the Healthcare Sector" · Dr. Satish M. Srinivasan સાથે સહ-લેખન',
     'tl7.h3': 'D.Eng. Candidate · The Pennsylvania State University',
     'tl7.p':  'AI & Workforce Analytics · Graduate Certificate in Engineering Leadership & Innovation Management (ચાલુ)',
     'contact.email':    'ઈ-મેઈલ',
     'contact.location': 'સ્થાન',
     'contact.credentials': 'પ્રમાણ-પત્ર',
     'contact.affiliation': 'સંસ્થા',
-    'contact.affiliation.val': 'The Pennsylvania State University · D.Eng. કાર્યક્રમ'
+    'contact.affiliation.val': 'The Pennsylvania State University · D.Eng. કાર્યક્રમ',
+    'pillar2.p2':    'Key finding: 27 રાજ્યોમાં મહત્વની inverse correlation (r = −0.402, p = 0.038): ઓછી median household income ધરાવતા રાજ્યોમાં digital spiritual-facilitation postings નો ઊંચો હિસ્સો જોવા મળ્યો.',
+    'csc894.desc':   'GCP pipeline પર healthcare claims data process કરતી fictional HealthRiskAI application ની આસપાસ બનેલ graduate-level Computer Science capstone. Students data ingestion, model training, deployment, અને monitoring — HIPAA compliance, equity, અને clinical stewardship સાથે — ના full production arc માંથી પસાર થાય છે.',
+    'contact.form.name':   'નામ',
+    'contact.form.email':  'ઈ-મેઈલ',
+    'contact.form.submit': 'સંદેશ મોકલો',
+    'contact.success':     'સંદેશ મળ્યો — હું ટૂંક સમયમાં સંપર્ક કરીશ.',
+    'contact.error':       'કંઈક ખોટું ગયું — કૃપા કરીને rpp5069@gmail.com પર સીધો સંપર્ક કરો.'
   },
 
   hi: {
@@ -257,7 +283,7 @@ var I18N = {
     'hero.tagline':    'cloud pipelines और data models engineer करके विश्वव्यापी workforce को AI कैसे बदल रहा है — यह उजागर करना।',
     'hero.bio1':       'मैं Penn State University में AI और workforce analytics में विशेषज्ञ D.Eng. उम्मीदवार हूँ। मेरा शोध large-scale employer demand data, NLP, और production-grade cloud architectures को जोड़कर पहचानता है कि machine learning occupational skill sets को कैसे बदलती है।',
     'hero.bio2':       'Dr. Satish M. Srinivasan के मार्गदर्शन में, मेरा doctoral work GCP-native ETL pipelines बनाने पर केंद्रित है। Equity, XAI, और clinical stewardship को champion करने वाले data solutions develop करना मेरा जुनून है।',
-    'hero.award':      '2025 NABET सर्वश्रेष्ठ शोध-पत्र — स्वास्थ्य सेवा कार्यबल पर AI का प्रभाव',
+    'hero.award':      '2025 NABET सर्वश्रेष्ठ शोध-पत्र — स्वास्थ्य क्षेत्र में कृत्रिम बुद्धिमत्ता का प्रभाव',
     'cred.deng':  'D.Eng. उम्मीदवार · Penn State',
     'cred.award': '🏆 NABET Best Paper Award 2025',
     'cred.ms':    'M.S. Information Science · GPA 3.73',
@@ -271,21 +297,28 @@ var I18N = {
     'pub4.h3': 'स्वास्थ्य सेवा में Multi-Agentic AI के आर्किटेक्चरल पैटर्न और ऑर्केस्ट्रेशन फ्रेमवर्क',
     'pub4.p':  'New Jersey Big Data Alliance (NJBDA) Annual Symposium',
     'pub4.badge':      'Lightning Talk 2026',
-    'pub3.h3': 'स्वास्थ्य सेवा में AI का प्रभाव',
+    'pub3.h3': 'स्वास्थ्य क्षेत्र में कृत्रिम बुद्धिमत्ता का प्रभाव',
     'pub3.p':  'National Association for Business, Economics, and Technology (NABET) Annual Conference · Dr. Satish M. Srinivasan के साथ सह-लेखन',
     'pub.forthcoming': '2026 में प्रस्तुत',
     'pub.award':       '🏆 सर्वश्रेष्ठ शोध-पत्र',
     'tl1.h3': 'दो शोध-पत्र स्वीकृत · NABET 2026',
     'tl1.p':  '"AI में विश्वास बनाना..." और "धार्मिक बाजार में AI..." 2026 NABET Conference में प्रस्तुत',
     'tl2.h3': 'NABET सर्वश्रेष्ठ शोध-पत्र पुरस्कार',
-    'tl2.p':  'स्वास्थ्य सेवा कार्यबल पर AI का प्रभाव — Dr. Satish M. Srinivasan के साथ सह-लेखन',
+    'tl2.p':  '"Impact of Artificial Intelligence in the Healthcare Sector" · Dr. Satish M. Srinivasan के साथ सह-लेखन',
     'tl7.h3': 'D.Eng. Candidate · The Pennsylvania State University',
     'tl7.p':  'AI & Workforce Analytics · Graduate Certificate in Engineering Leadership & Innovation Management (प्रगति में)',
     'contact.email':    'ईमेल',
     'contact.location': 'स्थान',
     'contact.credentials': 'प्रमाण-पत्र',
     'contact.affiliation': 'संस्था',
-    'contact.affiliation.val': 'The Pennsylvania State University · D.Eng. कार्यक्रम'
+    'contact.affiliation.val': 'The Pennsylvania State University · D.Eng. कार्यक्रम',
+    'pillar2.p2':    'Key finding: 27 राज्यों में महत्वपूर्ण inverse correlation (r = −0.402, p = 0.038): कम median household income वाले राज्यों में digital spiritual-facilitation postings का उच्च अनुपात देखा गया।',
+    'csc894.desc':   'GCP pipeline पर healthcare claims data process करने वाले काल्पनिक HealthRiskAI application के इर्द-गिर्द बना graduate-level Computer Science capstone। Students HIPAA compliance, equity, और clinical stewardship के साथ — data ingestion, model training, deployment, और monitoring के पूरे production arc से गुज़रते हैं।',
+    'contact.form.name':   'नाम',
+    'contact.form.email':  'ईमेल',
+    'contact.form.submit': 'संदेश भेजें',
+    'contact.success':     'संदेश मिला — मैं जल्द ही संपर्क करूँगा।',
+    'contact.error':       'कुछ गलत हो गया — कृपया rpp5069@gmail.com पर सीधे ईमेल करें।'
   }
 };
 
@@ -295,6 +328,7 @@ var _lang = localStorage.getItem('rp-lang') || 'en';
 window.setLang = function (lang) {
   _lang = lang;
   localStorage.setItem('rp-lang', lang);
+  document.documentElement.lang = lang;
   ['en','gu','hi'].forEach(function (l) {
     var btn = document.getElementById('lang-' + l);
     if (!btn) return;
