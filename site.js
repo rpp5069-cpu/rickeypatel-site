@@ -271,7 +271,21 @@ var I18N = {
     'contact.form.email':  'ઈ-મેઈલ',
     'contact.form.submit': 'સંદેશ મોકલો',
     'contact.success':     'સંદેશ મળ્યો — હું ટૂંક સમયમાં સંપર્ક કરીશ.',
-    'contact.error':       'કંઈક ખોટું ગયું — કૃપા કરીને rpp5069@gmail.com પર સીધો સંપર્ક કરો.'
+    'contact.error':       'કંઈક ખોટું ગયું — કૃપા કરીને rpp5069@gmail.com પર સીધો સંપર્ક કરો.',
+    /* Research page */
+    'research.page.eyebrow': 'શૈક્ષણિક સંશોધન',
+    'research.page.h1':      'સંશોધન અને પ્રકાશનો',
+    'research.page.desc':    'AI-driven labor market transformation પર doctoral research — macro skill-demand shifts થી spiritual labor platforms માં digital equity સુધી.',
+    'pillar1.label': 'સંશોધન સ્તંભ ૧',
+    'pillar1.h3':    'Macro Labor Market Shifts', // REVIEW: native speaker may prefer 'શ્રમ બજારના ફેરફારો'
+    'pillar1.p1':    'મારું core doctoral work examine કરે છે કે AI adoption employer ની skill demand ની રચના કઈ રીતે બદલે છે. GCP (BigQuery, Dataflow, Cloud Storage) પર production ETL pipelines ઉપયોગ કરીને, હું USAJobs અને Jooble પરથી longitudinal job posting data collect કરું છું, પછી CS, MBA, Data Analytics, અને AI domains માં occupational skill signals extract કરવા BERTopic અને LDA apply કરું છું.',
+    'pillar1.p2':    'Central research question: machine learning capabilities expand થતાં, કઈ human competencies દુર્લભ બને છે, કઈ redundant બને છે, અને કયા નવા hybrid skill clusters ઉભરે છે? Cross-sector, longitudinal comparisons સક્ષમ કરવા દરેક role ને O*NET 24.2 competency frameworks સાથે map કરવામાં આવે છે.', // REVIEW: opening clause phrasing
+    'pillar1.stat':  'ચાર domains · 12 O*NET competency families · 2025 થી longitudinal',
+    'pillar2.label': 'સંશોધન સ્તંભ ૨',
+    'pillar2.h3':    'Digital Labor Equity અને Spiritual Ecosystems',
+    'pillar2.p1':    'એક સમાંતર research thread spiritual facilitation roles — chaplains, clergy, અને pastoral staff — ના digital labor platform access માં structural inequities ની તપાસ કરે છે. IRS, Census, USDA, અને SerpAPI data ના આધારે national, state, અને metro architectures માં, આ analysis 27 U.S. states ને આવરે છે.',
+    'pillar2.stat':  'r = −0.402 (p = 0.038) · 27 states · IRS + Census + USDA + SerpAPI',
+    'pubindex.h2':   'પ્રકાશનો'
   },
 
   hi: {
@@ -318,7 +332,21 @@ var I18N = {
     'contact.form.email':  'ईमेल',
     'contact.form.submit': 'संदेश भेजें',
     'contact.success':     'संदेश मिला — मैं जल्द ही संपर्क करूँगा।',
-    'contact.error':       'कुछ गलत हो गया — कृपया rpp5069@gmail.com पर सीधे ईमेल करें।'
+    'contact.error':       'कुछ गलत हो गया — कृपया rpp5069@gmail.com पर सीधे ईमेल करें।',
+    /* Research page */
+    'research.page.eyebrow': 'शैक्षणिक शोध',
+    'research.page.h1':      'शोध और प्रकाशन',
+    'research.page.desc':    'AI-driven labor market transformation पर doctoral research — macro skill-demand shifts से लेकर spiritual labor platforms में digital equity तक.',
+    'pillar1.label': 'शोध स्तंभ १',
+    'pillar1.h3':    'Macro Labor Market में बदलाव', // REVIEW: native speaker may prefer 'श्रम बाज़ार में बदलाव'
+    'pillar1.p1':    'मेरा core doctoral work examine करता है कि AI adoption employer की skill demand की संरचना कैसे बदलती है। GCP (BigQuery, Dataflow, Cloud Storage) पर production ETL pipelines का उपयोग करके, मैं USAJobs और Jooble से longitudinal job posting data collect करता हूँ, फिर CS, MBA, Data Analytics, और AI domains में occupational skill signals extract करने के लिए BERTopic और LDA apply करता हूँ।',
+    'pillar1.p2':    'Central research question: जैसे-जैसे machine learning capabilities expand होती हैं, कौन सी human competencies दुर्लभ होती हैं, कौन सी redundant बनती हैं, और कौन से नए hybrid skill clusters उभरते हैं? Cross-sector, longitudinal comparisons के लिए प्रत्येक role को O*NET 24.2 competency frameworks से map किया जाता है।', // REVIEW: opening clause phrasing
+    'pillar1.stat':  'चार domains · 12 O*NET competency families · 2025 से longitudinal',
+    'pillar2.label': 'शोध स्तंभ २',
+    'pillar2.h3':    'Digital Labor Equity और Spiritual Ecosystems',
+    'pillar2.p1':    'एक समानांतर research thread spiritual facilitation roles — chaplains, clergy, और pastoral staff — के digital labor platform access में structural inequities की जांच करता है। IRS, Census, USDA, और SerpAPI data पर आधारित national, state, और metro architectures में, यह analysis 27 U.S. states तक फैली है।',
+    'pillar2.stat':  'r = −0.402 (p = 0.038) · 27 states · IRS + Census + USDA + SerpAPI',
+    'pubindex.h2':   'प्रकाशन'
   }
 };
 
