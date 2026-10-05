@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Contact — Rickey Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+  <a class="nav-name" href="index.html">Rickey Patel</a>
+  <ul class="nav-links">
+    <li><a href="research.html"  data-i18n="nav.research">Research</a></li>
+    <li><a href="pipelines.html" data-i18n="nav.engineering">Engineering</a></li>
+    <li><a href="teaching.html"  data-i18n="nav.teaching">Teaching</a></li>
+    <li><a href="contact.html"   class="current" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-btn active" id="lang-en" onclick="setLang('en')" aria-pressed="true">EN</button>
+      <button class="lang-btn" id="lang-gu" onclick="setLang('gu')" aria-pressed="false">ગુ</button>
+      <button class="lang-btn" id="lang-hi" onclick="setLang('hi')" aria-pressed="false">हि</button>
+    </div>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg id="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="icon-sun"  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+</nav>
+
+<main>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="border-bottom:1px solid var(--border);">
+  <span class="eyebrow">Collaboration</span>
+  <h1 data-i18n="contact.page.h1">Contact &amp; Collaboration</h1>
+  <p data-i18n="contact.page.desc">Open to research collaboration, speaking engagements, and conversations about AI, labor markets, and data engineering.</p>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="form">
+  <h2 data-i18n="contact.form.h2">Send a Message</h2>
+  <form class="contact-form" id="contact-form" novalidate>
+    <div class="form-field">
+      <label for="cf-name">Name</label>
+      <input type="text" id="cf-name" name="cf-name" placeholder="Your name" autocomplete="name" required>
+    </div>
+    <div class="form-field">
+      <label for="cf-affiliation">Affiliation</label>
+      <input type="text" id="cf-affiliation" name="cf-affiliation" placeholder="University, company, or organization" autocomplete="organization">
+    </div>
+    <div class="form-field">
+      <label for="cf-inquiry">Inquiry Type</label>
+      <div class="form-select-wrap">
+        <select id="cf-inquiry" name="cf-inquiry">
+          <option value="Research Collaboration">Research Collaboration</option>
+          <option value="Job Opportunity">Job Opportunity</option>
+          <option value="Guest Speaking">Guest Speaking</option>
+          <option value="General Inquiry">General Inquiry</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" name="cf-message" placeholder="What's on your mind?" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message</button>
+  </form>
+</section>
+
+<!-- DIRECT LINKS -->
+<section id="direct">
+  <h2 data-i18n="contact.direct.h2">Direct</h2>
+  <div class="contact-rows">
+    <div class="contact-row">
+      <span class="contact-label" data-i18n="contact.email">Email</span>
+      <span class="contact-value"><a href="mailto:rpp5069@gmail.com">rpp5069@gmail.com</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">LinkedIn</span>
+      <span class="contact-value"><a href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">linkedin.com/in/rickey-patel</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">GitHub</span>
+      <span class="contact-value"><a href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">github.com/rpp5069-cpu</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label" data-i18n="contact.credentials">Credentials</span>
+      <span class="contact-value"><a href="https://www.credly.com/users/rickey-patel" target="_blank" rel="noopener">credly.com/users/rickey-patel</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label" data-i18n="contact.location">Location</span>
+      <span class="contact-value">Scranton, PA</span>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label" data-i18n="contact.affiliation">Affiliation</span>
+      <span class="contact-value" data-i18n="contact.affiliation.val">The Pennsylvania State University · D.Eng. Program</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>Rickey Patel · Penn State University</span>
+  <span>Updated 2026</span>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

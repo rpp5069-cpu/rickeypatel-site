@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Research &amp; Publications — Rickey Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+  <a class="nav-name" href="index.html">Rickey Patel</a>
+  <ul class="nav-links">
+    <li><a href="research.html"  class="current" data-i18n="nav.research">Research</a></li>
+    <li><a href="pipelines.html" data-i18n="nav.engineering">Engineering</a></li>
+    <li><a href="teaching.html"  data-i18n="nav.teaching">Teaching</a></li>
+    <li><a href="contact.html"   data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-btn active" id="lang-en" onclick="setLang('en')" aria-pressed="true">EN</button>
+      <button class="lang-btn" id="lang-gu" onclick="setLang('gu')" aria-pressed="false">ગુ</button>
+      <button class="lang-btn" id="lang-hi" onclick="setLang('hi')" aria-pressed="false">हि</button>
+    </div>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg id="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="icon-sun"  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+</nav>
+
+<main>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="border-bottom:1px solid var(--border);">
+  <span class="eyebrow" data-i18n="research.page.eyebrow">Academic Research</span>
+  <h1 data-i18n="research.page.h1">Research &amp; Publications</h1>
+  <p data-i18n="research.page.desc">Doctoral research on AI-driven labor market transformation — from macro skill-demand shifts to digital equity in spiritual labor platforms.</p>
+</section>
+
+<!-- RESEARCH PILLARS -->
+<section id="research">
+  <h2>Research Pillars</h2>
+
+  <div class="pillar">
+    <span class="pillar-label" data-i18n="pillar1.label">Research Pillar 1</span>
+    <h3 data-i18n="pillar1.h3">Macro Labor Market Shifts</h3>
+    <p data-i18n="pillar1.p1">My core doctoral work examines how AI adoption changes the composition of skills that employers actually demand. Using production ETL pipelines on GCP (BigQuery, Dataflow, Cloud Storage), I collect longitudinal job posting data from USAJobs and Jooble, then apply BERTopic and LDA to extract occupational skill signals across CS, MBA, Data Analytics, and AI domains.</p>
+    <p data-i18n="pillar1.p2">The central research question: as machine learning capabilities expand, which human competencies become scarcer, which become redundant, and which new hybrid skill clusters emerge? Every role is mapped to O*NET 24.2 competency frameworks to enable cross-sector, longitudinal comparisons.</p>
+    <div class="stat-callout" data-i18n="pillar1.stat">Four domains · 12 O*NET competency families · Longitudinal since 2024</div>
+    <div class="tags" style="margin-top:1rem;">
+      <span class="tag">BERTopic</span><span class="tag">LDA</span><span class="tag">NLP</span>
+      <span class="tag">BigQuery</span><span class="tag">Dataflow</span><span class="tag">Vertex AI</span>
+      <span class="tag">O*NET 24.2</span><span class="tag">Python</span>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <span class="pillar-label" data-i18n="pillar2.label">Research Pillar 2</span>
+    <h3 data-i18n="pillar2.h3">Digital Labor Equity &amp; Spiritual Ecosystems</h3>
+    <p data-i18n="pillar2.p1">A parallel research thread investigates structural inequities in digital labor platform access among spiritual facilitation roles — chaplains, clergy, and pastoral staff. Drawing on IRS, Census, USDA, and SerpAPI data across national, state, and metro architectures, the analysis spans 27 U.S. states.</p>
+    <p data-i18n="pillar2.p2">Key finding: an inverse correlation of r = −0.402 (p = 0.038) between digital labor market participation and household income — revealing that workers in lower-income regions are systematically under-represented on digital labor platforms, even when controlling for internet access.</p>
+    <div class="stat-callout" data-i18n="pillar2.stat">r = −0.402 (p = 0.038) · 27 states · IRS + Census + USDA + SerpAPI</div>
+    <div class="tags" style="margin-top:1rem;">
+      <span class="tag">OLS Regression</span><span class="tag">Moran's I</span>
+      <span class="tag">GeoPandas</span><span class="tag">SerpAPI</span>
+      <span class="tag">Census Data</span><span class="tag">Network Analysis</span><span class="tag">R</span>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <span class="pillar-label">Earlier Work</span>
+    <h3>Healthcare Workforce Equity &amp; XAI Ethics</h3>
+    <p>Earlier work examined how clinical AI reshapes the skill profiles of roles from diagnostics to telemedicine. The project developed an XAI ethics-by-design framework with fairness audits and real-time streaming pipelines — co-authored with Dr. Satish M. Srinivasan — and produced the 2025 NABET Best Paper Award.</p>
+    <div class="tags" style="margin-top:1rem;">
+      <span class="tag">XAI / SHAP</span><span class="tag">Deep Learning</span>
+      <span class="tag">Kafka</span><span class="tag">Spark</span><span class="tag">Flink</span>
+      <span class="tag">Power BI</span>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <h2 data-i18n="pubindex.h2">Publications</h2>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <h3 data-i18n="pub1.h3">Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare</h3>
+        <p data-i18n="pub1.p">National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026</p>
+        <span class="pub-badge pub-badge-forthcoming" data-i18n="pub.forthcoming">Presenting 2026</span>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <h3 data-i18n="pub2.h3">Impact and Current State of Artificial Intelligence in the Religious Market</h3>
+        <p data-i18n="pub2.p">National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026</p>
+        <span class="pub-badge pub-badge-forthcoming" data-i18n="pub.forthcoming">Presenting 2026</span>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <h3 data-i18n="pub4.h3">Architectural Patterns and Orchestration Frameworks in Multi-Agentic AI for Healthcare</h3>
+        <p data-i18n="pub4.p">New Jersey Big Data Alliance (NJBDA) Annual Symposium</p>
+        <span class="pub-badge pub-badge-forthcoming" data-i18n="pub4.badge">Lightning Talk 2026</span>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <h3 data-i18n="pub3.h3">Impact of AI in Healthcare</h3>
+        <p data-i18n="pub3.p">National Association for Business, Economics, and Technology (NABET) Annual Conference · Co-authored with Dr. Satish M. Srinivasan</p>
+        <span class="pub-badge pub-badge-award" data-i18n="pub.award">🏆 Best Paper Award</span><a class="pub-view-btn" href="https://www.nabet.us/proceedings-archive/NABET-Proceedings-2025.pdf#page=250" target="_blank" rel="noopener">View</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>Rickey Patel · Penn State University</span>
+  <span>Updated 2026</span>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

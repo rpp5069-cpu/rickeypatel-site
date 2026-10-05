@@ -1,565 +1,35 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Rickey Patel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
 
-<style>
-/*
-* Layout: single narrow column, sticky nav, section-based scroll
-* Palette: warm off-white / deep ink, Penn State navy accent
-* Type: Instrument Serif (display) + Instrument Sans (body)
-*/
-:root {
---bg: #F6F6F3;
---fg: #18181B;
---fg-muted: #6B6B74;
---accent: #1E407C;
---accent-pale: #E7EDF7;
---border: #E2E2DC;
---serif: 'Instrument Serif', Georgia, serif;
---sans: 'Instrument Sans', system-ui, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-:root:not([data-theme="light"]) {
---bg: #111115;
---fg: #EAEAE6;
---fg-muted: #888893;
---accent: #5B8FCC;
---accent-pale: #17233A;
---border: #27272D;
-color-scheme: dark;
-}
-}
-:root[data-theme="dark"] {
---bg: #111115;
---fg: #EAEAE6;
---fg-muted: #888893;
---accent: #5B8FCC;
---accent-pale: #17233A;
---border: #27272D;
-color-scheme: dark;
-}
-:root[data-theme="light"] {
---bg: #F6F6F3;
---fg: #18181B;
---fg-muted: #6B6B74;
---accent: #1E407C;
---accent-pale: #E7EDF7;
---border: #E2E2DC;
-color-scheme: light;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-
-body {
-background: var(--bg);
-color: var(--fg);
-font-family: var(--sans);
-font-size: 1rem;
-line-height: 1.7;
-margin: 0;
-padding-inline: max(1.5rem, env(safe-area-inset-left, 1.5rem));
-padding-block: 0;
-}
-
-/* ── Nav ── */
-nav {
-position: sticky;
-top: env(safe-area-inset-top, 0px);
-background: var(--bg);
-border-bottom: 1px solid var(--border);
-z-index: 20;
-}
-.nav-inner {
-max-width: 700px;
-margin-inline: auto;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding-block: 1rem;
-gap: 1rem;
-}
-
-/* ── Nav controls (theme + language) ── */
-.nav-controls {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-flex-shrink: 0;
-}
-.lang-switcher {
-display: flex;
-border: 1px solid var(--border);
-border-radius: 4px;
-overflow: hidden;
-}
-.lang-btn {
-background: none;
-border: none;
-border-right: 1px solid var(--border);
-color: var(--fg-muted);
-font-size: 0.72rem;
-font-weight: 600;
-padding: 0.28rem 0.5rem;
-cursor: pointer;
-font-family: var(--sans);
-transition: background 0.15s, color 0.15s;
-line-height: 1;
-}
-.lang-btn:last-child { border-right: none; }
-.lang-btn:hover { background: var(--accent-pale); color: var(--fg); }
-.lang-btn.active { background: var(--accent); color: #fff; }
-.theme-btn {
-background: none;
-border: 1px solid var(--border);
-border-radius: 4px;
-color: var(--fg-muted);
-cursor: pointer;
-padding: 0.28rem 0.5rem;
-display: flex;
-align-items: center;
-transition: background 0.15s, color 0.15s;
-line-height: 1;
-}
-.theme-btn:hover { background: var(--accent-pale); color: var(--fg); }
-.nav-name {
-font-family: var(--serif);
-font-size: 1.05rem;
-color: var(--fg);
-text-decoration: none;
-flex-shrink: 0;
-}
-.nav-links {
-list-style: none;
-margin: 0; padding: 0;
-display: flex;
-gap: 1.5rem;
-flex-wrap: wrap;
-}
-.nav-links a {
-color: var(--fg-muted);
-text-decoration: none;
-font-size: 0.85rem;
-letter-spacing: 0.025em;
-transition: color 0.15s;
-}
-.nav-links a:hover,
-.nav-links a:focus-visible { color: var(--fg); }
-
-/* ── Main container ── */
-main { max-width: 700px; margin-inline: auto; }
-
-section {
-padding-block: 4rem;
-border-bottom: 1px solid var(--border);
-}
-section:last-of-type { border-bottom: none; }
-
-/* ── Hero ── */
-.hero { padding-top: 5.5rem; padding-bottom: 4.5rem; }
-
-.eyebrow {
-font-size: 0.75rem;
-font-weight: 600;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-color: var(--accent);
-margin-bottom: 1.25rem;
-display: block;
-}
-
-h1 {
-font-family: var(--serif);
-font-size: clamp(2.4rem, 6vw, 3.6rem);
-line-height: 1.1;
-font-weight: 400;
-margin: 0 0 1.5rem;
-text-wrap: balance;
-}
-h1 em { font-style: italic; }
-
-.hero-intro {
-font-size: 1.1rem;
-color: var(--fg-muted);
-max-width: 54ch;
-margin-bottom: 2rem;
-line-height: 1.7;
-}
-
-.award-badge {
-display: inline-flex;
-align-items: flex-start;
-gap: 0.5rem;
-background: var(--accent-pale);
-border-left: 3px solid var(--accent);
-padding: 0.5rem 0.875rem;
-border-radius: 0 3px 3px 0;
-font-size: 0.82rem;
-color: var(--fg);
-font-weight: 500;
-margin-bottom: 2rem;
-max-width: 44ch;
-line-height: 1.5;
-}
-.award-badge svg { flex-shrink: 0; margin-top: 2px; }
-
-.hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.btn {
-display: inline-flex;
-align-items: center;
-gap: 0.35rem;
-padding: 0.525rem 1.1rem;
-border-radius: 3px;
-font-size: 0.875rem;
-font-weight: 500;
-text-decoration: none;
-letter-spacing: 0.01em;
-transition: opacity 0.15s, box-shadow 0.15s;
-}
-.btn:hover { opacity: 0.82; }
-.btn-primary { background: var(--accent); color: #fff; }
-.btn-outline { border: 1px solid var(--border); color: var(--fg); }
-
-/* ── Section headings ── */
-h2 {
-font-family: var(--serif);
-font-size: 1.65rem;
-font-weight: 400;
-margin: 0 0 1.5rem;
-text-wrap: balance;
-line-height: 1.2;
-}
-
-h3 {
-font-size: 0.95rem;
-font-weight: 600;
-margin: 0 0 0.3rem;
-line-height: 1.4;
-}
-
-p { margin: 0 0 1rem; }
-p:last-child { margin-bottom: 0; }
-
-/* ── Research ── */
-.research-body { color: var(--fg); }
-
-.methods-label {
-font-size: 0.75rem;
-font-weight: 600;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(--fg-muted);
-margin: 1.5rem 0 0.625rem;
-}
-
-.tags {
-display: flex;
-flex-wrap: wrap;
-gap: 0.4rem;
-}
-.tag {
-font-size: 0.78rem;
-padding: 0.25rem 0.6rem;
-background: var(--accent-pale);
-color: var(--accent);
-border-radius: 2px;
-font-weight: 500;
-letter-spacing: 0.01em;
-}
-
-/* ── Publications ── */
-.pub-list {
-display: flex;
-flex-direction: column;
-gap: 0;
-}
-.pub-item {
-display: grid;
-grid-template-columns: 5rem 1fr;
-gap: 0.875rem;
-padding-block: 1.25rem;
-border-bottom: 1px solid var(--border);
-}
-.pub-item:last-child { border-bottom: none; }
-.pub-year {
-font-size: 0.8rem;
-color: var(--fg-muted);
-padding-top: 0.15rem;
-font-variant-numeric: tabular-nums;
-letter-spacing: 0.02em;
-}
-.pub-body h3 {
-font-size: 0.95rem;
-font-weight: 600;
-margin: 0 0 0.25rem;
-line-height: 1.45;
-text-wrap: balance;
-}
-.pub-body p {
-font-size: 0.85rem;
-color: var(--fg-muted);
-margin: 0;
-line-height: 1.5;
-}
-.pub-badge {
-display: inline-flex;
-align-items: center;
-gap: 0.3rem;
-font-size: 0.72rem;
-font-weight: 600;
-letter-spacing: 0.06em;
-text-transform: uppercase;
-padding: 0.2rem 0.5rem;
-border-radius: 2px;
-margin-top: 0.4rem;
-}
-.pub-badge-award { background: var(--accent-pale); color: var(--accent); }
-.pub-badge-forthcoming { background: var(--accent-pale); color: var(--accent); }
-
-/* ── Projects ── */
-.projects-grid {
-display: flex;
-flex-direction: column;
-gap: 0;
-}
-.project-card {
-padding-block: 2rem;
-border-bottom: 1px solid var(--border);
-}
-.project-card:first-child { padding-top: 0; }
-.project-card:last-child { border-bottom: none; }
-.project-meta {
-font-size: 0.75rem;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-color: var(--fg-muted);
-margin-bottom: 0.5rem;
-}
-.project-card h3 {
-font-family: var(--serif);
-font-size: 1.2rem;
-font-weight: 400;
-margin: 0 0 0.6rem;
-}
-.project-card p {
-font-size: 0.925rem;
-color: var(--fg-muted);
-margin: 0 0 1rem;
-line-height: 1.65;
-max-width: 60ch;
-}
-.project-links {
-display: flex;
-gap: 1.25rem;
-flex-wrap: wrap;
-margin-bottom: 0.875rem;
-}
-.project-link {
-font-size: 0.875rem;
-color: var(--accent);
-text-decoration: none;
-display: inline-flex;
-align-items: center;
-gap: 0.3rem;
-}
-.project-link:hover { text-decoration: underline; }
-
-/* ── Timeline ── */
-.timeline {
-display: flex;
-flex-direction: column;
-}
-.tl-item {
-display: grid;
-grid-template-columns: 7rem 1fr;
-gap: 0.875rem;
-padding-block: 1.125rem;
-border-bottom: 1px solid var(--border);
-}
-.tl-item:last-child { border-bottom: none; }
-.tl-year {
-font-size: 0.8rem;
-color: var(--fg-muted);
-padding-top: 0.15rem;
-font-variant-numeric: tabular-nums;
-letter-spacing: 0.02em;
-line-height: 1.4;
-}
-.tl-body h3 { font-size: 0.9rem; }
-.tl-body p {
-font-size: 0.85rem;
-color: var(--fg-muted);
-margin: 0.15rem 0 0;
-line-height: 1.5;
-}
-
-/* ── Contact ── */
-.contact-intro {
-font-size: 1.05rem;
-max-width: 50ch;
-color: var(--fg-muted);
-margin-bottom: 2rem;
-}
-.contact-rows {
-display: flex;
-flex-direction: column;
-gap: 0.75rem;
-}
-.contact-row {
-display: flex;
-align-items: baseline;
-gap: 0.75rem;
-font-size: 0.9rem;
-}
-.contact-label {
-font-size: 0.75rem;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-color: var(--fg-muted);
-min-width: 5.5rem;
-}
-.contact-value { color: var(--fg); }
-.contact-value a { color: var(--accent); text-decoration: none; }
-.contact-value a:hover { text-decoration: underline; }
-
-/* ── Footer ── */
-footer {
-max-width: 700px;
-margin-inline: auto;
-padding-block: 2rem;
-font-size: 0.78rem;
-color: var(--fg-muted);
-display: flex;
-justify-content: space-between;
-align-items: center;
-gap: 1rem;
-flex-wrap: wrap;
-}
-
-/* ── Responsive ── */
-@media (max-width: 520px) {
-.nav-links { gap: 0.875rem; }
-.tl-item, .course { grid-template-columns: 1fr; gap: 0.2rem; }
-.tl-year, .course-code { padding-top: 0; }
-.hero { padding-top: 3.5rem; }
-section { padding-block: 3rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-* { transition: none !important; }
-}
-
-/* ── Live Demo button ── */
-.rp-demo-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 12px;
-  padding: 7px 16px;
-  background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .2px;
-  cursor: pointer;
-  transition: opacity .15s, transform .1s;
-  font-family: inherit;
-  text-decoration: none;
-}
-.rp-demo-btn:hover {
-  opacity: .88;
-  transform: translateY(-1px);
-}
-.rp-demo-btn svg {
-  flex-shrink: 0;
-}
-
-/* ── Modal overlay ── */
-#rp-demo-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-}
-#rp-demo-overlay.open {
-  display: flex;
-}
-#rp-demo-modal {
-  position: relative;
-  width: min(96vw, 1180px);
-  height: min(92vh, 840px);
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 24px 80px rgba(0,0,0,.35);
-  display: flex;
-  flex-direction: column;
-}
-#rp-demo-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 16px;
-  background: #0f1117;
-  color: #fff;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 11px;
-  letter-spacing: .6px;
-  flex-shrink: 0;
-}
-#rp-demo-label {
-  opacity: .8;
-}
-#rp-demo-close {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0 4px;
-  opacity: .7;
-  transition: opacity .15s;
-}
-#rp-demo-close:hover { opacity: 1; }
-#rp-demo-frame {
-  flex: 1;
-  border: none;
-  width: 100%;
-}
-</style>
-
-<!-- NAV -->
 <nav>
 <div class="nav-inner">
-<a class="nav-name" href="#top">Rickey Patel</a>
-<ul class="nav-links">
-<li><a href="#research" data-i18n="nav.research">Research</a></li>
-<li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
-<li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-<li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-</ul>
-<div class="nav-controls">
-  <div class="lang-switcher" role="group" aria-label="Language">
-    <button class="lang-btn active" id="lang-en" onclick="setLang('en')" aria-pressed="true">EN</button>
-    <button class="lang-btn" id="lang-gu" onclick="setLang('gu')" aria-pressed="false">ગુ</button>
-    <button class="lang-btn" id="lang-hi" onclick="setLang('hi')" aria-pressed="false">हि</button>
+  <a class="nav-name" href="index.html">Rickey Patel</a>
+  <ul class="nav-links">
+    <li><a href="research.html"  data-i18n="nav.research">Research</a></li>
+    <li><a href="pipelines.html" data-i18n="nav.engineering">Engineering</a></li>
+    <li><a href="teaching.html"  data-i18n="nav.teaching">Teaching</a></li>
+    <li><a href="contact.html"   data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-btn active" id="lang-en" onclick="setLang('en')" aria-pressed="true">EN</button>
+      <button class="lang-btn" id="lang-gu" onclick="setLang('gu')" aria-pressed="false">ગુ</button>
+      <button class="lang-btn" id="lang-hi" onclick="setLang('hi')" aria-pressed="false">हि</button>
+    </div>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg id="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="icon-sun"  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
   </div>
-  <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
-    <svg id="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    <svg id="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-  </button>
-</div>
 </div>
 </nav>
 
@@ -567,609 +37,130 @@ section { padding-block: 3rem; }
 
 <!-- HERO -->
 <section class="hero">
-<span class="eyebrow" data-i18n="hero.eyebrow">Penn State University · D.Eng. Candidate</span>
-<h1>Rickey Patel</h1>
-<p class="hero-intro" data-i18n="hero.intro">
-I study how artificial intelligence is reshaping the workforce and labor markets.
-My work combines large-scale job posting data, NLP, and GCP-native pipelines to
-surface how AI is changing the skills employers need — and who gets left out.
-I hold an M.S. in Information Science from Penn State (2025) and am pursuing a
-D.Eng. advised by Dr. Satish M. Srinivasan, alongside a Graduate Certificate in
-Engineering Leadership and Innovation Management.
-</p>
-<div class="award-badge">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" color="var(--accent)" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-<span data-i18n="hero.award">2025 NABET Best Paper Award — AI's impact on healthcare workforce</span>
-</div>
-<div class="hero-links">
-<a class="btn btn-primary" href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-LinkedIn
-</a>
-<a class="btn btn-outline" href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12c0-5.523-4.477-10-10-10z"/></svg>
-GitHub
-</a>
-<a class="btn btn-outline" href="mailto:rpp5069@gmail.com">
-rpp5069@gmail.com
-</a>
-</div>
+  <span class="eyebrow" data-i18n="hero.eyebrow">D.Eng. Candidate · Penn State University</span>
+  <h1>Rickey Patel</h1>
+  <p class="hero-tagline" data-i18n="hero.tagline">
+    Engineering the cloud pipelines and data models that uncover how artificial intelligence is reshaping the global workforce.
+  </p>
+  <p class="hero-bio" data-i18n="hero.bio1">
+    I am a D.Eng. Candidate at Penn State University specializing in AI and workforce analytics. My research combines large-scale employer demand data, natural language processing (NLP), and production-grade cloud architectures to identify how machine learning alters required occupational skill sets — and analyze who risks being left behind in the digital economy.
+  </p>
+  <p class="hero-bio" data-i18n="hero.bio2">
+    Advised by Dr. Satish M. Srinivasan, my doctoral work focuses on building fully automated, GCP-native ETL pipelines to trace longitudinal skill shifts across sectors ranging from healthcare delivery to digital religious labor platforms. I am passionate about bridging the gap between academic labor economics and enterprise software architecture, developing data solutions that champion equity, explainable AI (XAI), and clinical stewardship.
+  </p>
+  <div class="award-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" color="var(--accent)" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+    <span data-i18n="hero.award">2025 NABET Best Paper Award — AI's impact on healthcare workforce</span>
+  </div>
+  <div class="hero-links">
+    <a class="btn btn-primary" href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a class="btn btn-outline" href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      GitHub
+    </a>
+    <a class="btn btn-outline" href="contact.html">Get in Touch</a>
+  </div>
 </section>
 
-<!-- RESEARCH -->
-<section id="research">
-<h2 data-i18n="research.h2">Research</h2>
-<div class="research-body">
-<p data-i18n="research.p1">
-My doctoral research, advised by Dr. Satish M. Srinivasan, examines AI's role in labor market
-transformation. I build production ETL pipelines on GCP (BigQuery, Dataflow, Cloud Storage)
-to collect and analyze longitudinal employer skill demand data, applying BERTopic and LDA
-to extract occupational skill signals and identify curriculum gaps between what institutions
-teach and what the labor market actually needs.
-</p>
-<p data-i18n="research.p2">
-A parallel research thread focuses on the digital labor market for spiritual facilitation
-roles — chaplains, clergy, and pastoral staff. Drawing on IRS, Census, USDA, and SerpAPI
-data across national, state, and metro architectures, I found an inverse correlation of
-r = −0.402 (p = 0.038) between digital labor market participation and household income
-across 27 states, pointing to persistent structural inequities in who benefits from
-digital labor platforms.
-</p>
-<p data-i18n="research.p3">
-Earlier work on healthcare workforce equity — how clinical AI reshapes the skill profiles
-of roles from diagnostics to telemedicine — produced a 2025 NABET Best Paper Award
-co-authored with Dr. Srinivasan. That project also developed an XAI ethics-by-design
-framework with fairness audits and real-time streaming pipelines.
-</p>
-
-<p class="methods-label" data-i18n="research.methods">Methods &amp; Tools</p>
-<div class="tags">
-<span class="tag">BERTopic</span>
-<span class="tag">LDA</span>
-<span class="tag">NLP</span>
-<span class="tag">XAI / SHAP</span>
-<span class="tag">Deep Learning</span>
-<span class="tag">Network Analysis</span>
-<span class="tag">OLS Regression</span>
-<span class="tag">Moran's I</span>
-<span class="tag">GeoPandas</span>
-<span class="tag">O*NET 24.2</span>
-<span class="tag">BigQuery</span>
-<span class="tag">Dataflow</span>
-<span class="tag">Vertex AI</span>
-<span class="tag">Kafka</span>
-<span class="tag">Spark</span>
-<span class="tag">Python</span>
-<span class="tag">R</span>
-<span class="tag">Power BI</span>
-</div>
-</div>
+<!-- CREDENTIAL TICKER -->
+<section style="padding-block:0;border-bottom:none;">
+  <div class="credential-ticker">
+    <span class="cred-badge"><span class="cred-dot"></span><span data-i18n="cred.deng">D.Eng. Candidate · Penn State</span></span>
+    <span class="cred-badge"><span class="cred-dot"></span><span data-i18n="cred.award">🏆 NABET Best Paper Award 2025</span></span>
+    <span class="cred-badge"><span class="cred-dot"></span><span data-i18n="cred.ms">M.S. Information Science · GPA 3.73</span></span>
+    <span class="cred-badge"><span class="cred-dot"></span><span data-i18n="cred.cert">Grad. Cert. Engineering Leadership &amp; Innovation Mgmt</span></span>
+  </div>
 </section>
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-<h2 data-i18n="publications.h2">Publications</h2>
-<div class="pub-list">
+<!-- TECH STACK + FEATURED PROJECTS -->
+<section id="stack">
+  <h2 data-i18n="stack.h2">Tech Stack</h2>
+  <p style="font-size:0.82rem;color:var(--fg-muted);margin-bottom:1rem;">Click a tag to filter featured work.</p>
+  <div class="tags" style="margin-bottom:2rem;">
+    <span class="stack-tag" data-filter="GCP">GCP</span>
+    <span class="stack-tag" data-filter="BigQuery">BigQuery</span>
+    <span class="stack-tag" data-filter="Dataflow">Dataflow</span>
+    <span class="stack-tag" data-filter="Vertex AI">Vertex AI</span>
+    <span class="stack-tag" data-filter="Kafka">Kafka</span>
+    <span class="stack-tag" data-filter="Spark">Spark</span>
+    <span class="stack-tag" data-filter="NLP">NLP</span>
+    <span class="stack-tag" data-filter="BERTopic">BERTopic</span>
+    <span class="stack-tag" data-filter="Deep Learning">Deep Learning</span>
+    <span class="stack-tag" data-filter="XAI">XAI / SHAP</span>
+    <span class="stack-tag" data-filter="Python">Python</span>
+    <span class="stack-tag" data-filter="R">R</span>
+    <span class="stack-tag" data-filter="GeoPandas">GeoPandas</span>
+    <span class="stack-tag" data-filter="Streamlit">Streamlit</span>
+    <span class="stack-tag" data-filter="DuckDB">DuckDB</span>
+  </div>
 
-<div class="pub-item">
-<div class="pub-year">2026</div>
-<div class="pub-body">
-<h3 data-i18n="pub1.h3">Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare</h3>
-<p data-i18n="pub1.p">National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026</p>
-<span class="pub-badge pub-badge-forthcoming" data-i18n="pub.forthcoming">Presenting 2026</span>
-</div>
-</div>
-
-<div class="pub-item">
-<div class="pub-year">2026</div>
-<div class="pub-body">
-<h3 data-i18n="pub2.h3">Impact and Current State of Artificial Intelligence in the Religious Market</h3>
-<p data-i18n="pub2.p">National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026</p>
-<span class="pub-badge pub-badge-forthcoming" data-i18n="pub.forthcoming">Presenting 2026</span>
-</div>
-</div>
-
-<div class="pub-item">
-<div class="pub-year">2026</div>
-<div class="pub-body">
-<h3 data-i18n="pub4.h3">Architectural Patterns and Orchestration Frameworks in Multi-Agentic AI for Healthcare</h3>
-<p data-i18n="pub4.p">New Jersey Big Data Alliance (NJBDA) Annual Symposium</p>
-<span class="pub-badge pub-badge-forthcoming" data-i18n="pub4.badge">Lightning Talk 2026</span>
-</div>
-</div>
-
-<div class="pub-item">
-<div class="pub-year">2025</div>
-<div class="pub-body">
-<h3 data-i18n="pub3.h3">Impact of AI in Healthcare</h3>
-<p data-i18n="pub3.p">National Association for Business, Economics, and Technology (NABET) Annual Conference · Co-authored with Dr. Satish M. Srinivasan</p>
-<span class="pub-badge pub-badge-award" data-i18n="pub.award">🏆 Best Paper Award</span><a class="pub-view-btn" href="https://www.nabet.us/proceedings-archive/NABET-Proceedings-2025.pdf#page=250" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.3rem;margin-left:0.5rem;padding:0.15rem 0.5rem;background:var(--accent);color:#fff;border-radius:3px;font-size:0.72rem;font-weight:600;text-decoration:none;letter-spacing:0.04em;">View</a>
-</div>
-</div>
-
-</div>
+  <div class="feat-grid">
+    <div class="feat-card" data-tags="GCP,BigQuery,Dataflow,Vertex AI,Kafka,NLP,BERTopic,Python,Spark">
+      <p class="feat-card-meta">GCP Pipeline · In Production</p>
+      <h3>Job Postings Intelligence Pipeline</h3>
+      <p>GCP-native pipeline: USAJobs + Jooble → Pub/Sub → Dataflow → BigQuery → Vertex AI AutoML. O*NET 24.2 competency mapping across CS, MBA, Data Analytics, and AI domains.</p>
+      <a class="feat-card-link" href="pipelines.html#job-pipeline">View engineering details →</a>
+    </div>
+    <div class="feat-card" data-tags="BigQuery,Vertex AI,NLP,Deep Learning,Python,GeoPandas">
+      <p class="feat-card-meta">Independent Research · 2024 – Present</p>
+      <h3>Religious Job Listings Dataset (RJLD)</h3>
+      <p>Multi-source IRS/Census/SerpAPI pipeline for spiritual facilitation roles. Fine-tuned RoBERTa multi-label classifier with an IAA gate (κ ≥ 0.6). Key finding: r = −0.402 (p = 0.038) digital equity gap across 27 states.</p>
+      <a class="feat-card-link" href="pipelines.html#rjld">View engineering details →</a>
+    </div>
+    <div class="feat-card" data-tags="GCP,Streamlit,Python,XAI,Deep Learning,DuckDB">
+      <p class="feat-card-meta">Course Development · Penn State Great Valley</p>
+      <h3>CSC 894: Healthcare AI Capstone</h3>
+      <p>Graduate-level capstone built around a real healthcare AI application on GCP. Clinical Stewardship &amp; Design Equity Rubric with mandatory fairness audits and XAI ethics-by-design built into every milestone.</p>
+      <a class="feat-card-link" href="teaching.html#csc894">View course details →</a>
+    </div>
+  </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-<h2 data-i18n="projects.h2">Projects</h2>
-<div class="projects-grid">
-
-<div class="project-card">
-<p class="project-meta" data-i18n="proj1.meta">GCP Pipeline · In Production</p>
-<h3 data-i18n="proj1.h3">Job Postings Intelligence Pipeline</h3>
-<p data-i18n="proj1.desc">
-A fully GCP-native pipeline collecting job postings across CS, MBA, Data Analytics,
-and AI domains from USAJobs and Jooble, scoring relevance, and mapping every role to
-O*NET 24.2 competency frameworks. Migrated from a Google Colab notebook to Cloud Run,
-BigQuery, and Cloud Scheduler, with a nine-phase interactive analytics dashboard
-and GitHub Actions auto-deploy.
-</p>
-<div class="project-links">
-<a class="project-link" href="https://github.com/rpp5069-cpu/job-pipeline" target="_blank" rel="noopener">
-<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12c0-5.523-4.477-10-10-10z"/></svg>
-GitHub
-</a>
-</div>
-<div class="tags">
-<span class="tag">Cloud Run</span>
-<span class="tag">BigQuery</span>
-<span class="tag">Dataflow</span>
-<span class="tag">Vertex AI</span>
-<span class="tag">O*NET</span>
-<span class="tag">Plotly</span>
-</div>
-<button class="rp-demo-btn" data-tab="gcp" onclick="rpOpenDemo(this)">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-       stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-       stroke-linejoin="round" aria-hidden="true">
-    <polygon points="5 3 19 12 5 21 5 3"/>
-  </svg>
-  Live Demo
-</button>
-</div>
-
-<div class="project-card">
-<p class="project-meta" data-i18n="proj2.meta">Independent Research · 2024 – Present</p>
-<h3 data-i18n="proj2.h3">Digital Labor Market Analysis — Spiritual Facilitation</h3>
-<p data-i18n="proj2.desc">
-A multi-source pipeline integrating IRS, Census, USDA, and SerpAPI data to track
-digital labor market participation among chaplains, pastors, clergy, and related roles
-across national, state, and metro geographies. Found an inverse correlation of
-r = −0.402 (p = 0.038) between digital labor ratio and household income across
-27 states — revealing structural inequities in who benefits from digital labor platforms.
-</p>
-<div class="tags">
-<span class="tag">BigQuery</span>
-<span class="tag">GCS</span>
-<span class="tag">SerpAPI</span>
-<span class="tag">Census Data</span>
-<span class="tag">OLS Regression</span>
-<span class="tag">Chart.js</span>
-</div>
-<button class="rp-demo-btn" data-tab="rjld" onclick="rpOpenDemo(this)">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-       stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-       stroke-linejoin="round" aria-hidden="true">
-    <polygon points="5 3 19 12 5 21 5 3"/>
-  </svg>
-  Live Demo
-</button>
-</div>
-
-<div class="project-card">
-<p class="project-meta" data-i18n="proj3.meta">Course Development · The Pennsylvania State University</p>
-<h3 data-i18n="proj3.h3">CSC 894: Healthcare AI Capstone</h3>
-<p data-i18n="proj3.desc">
-A graduate-level Computer Science capstone course built around a real healthcare AI
-application deployed on Google Cloud Platform. Students work end-to-end with production
-GCP services, culminating in a deployed AI system with equity and clinical stewardship
-considerations built into the design rubric.
-</p>
-<div class="tags">
-<span class="tag">GCP</span>
-<span class="tag">Healthcare AI</span>
-<span class="tag">Instructional Design</span>
-<span class="tag">Clinical Stewardship</span>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- TIMELINE -->
-<section id="timeline">
-<h2 data-i18n="timeline.h2">Timeline</h2>
-<div class="timeline">
-<div class="tl-item">
-<div class="tl-year">2026</div>
-<div class="tl-body">
-<h3 data-i18n="tl1.h3">Two Papers Accepted · NABET 2026</h3>
-<p data-i18n="tl1.p">Presenting "Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare" and "Impact and Current State of Artificial Intelligence in the Religious Market"</p>
-</div>
-</div>
-<div class="tl-item">
-<div class="tl-year">2025</div>
-<div class="tl-body">
-<h3 data-i18n="tl2.h3">NABET Best Paper Award</h3>
-<p data-i18n="tl2.p">AI's impact on healthcare workforce — co-authored with Dr. Satish M. Srinivasan</p>
-</div>
-</div>
-<div class="tl-item">
-<div class="tl-year">Jun 2025</div>
-<div class="tl-body">
-<h3 data-i18n="tl3.h3">Graduate Certificate · Business Process Integration · Penn State Great Valley</h3>
-<p data-i18n="tl3.p">IT system analysis, architecture, design, and implementation for business process needs</p>
-</div>
-</div>
-<div class="tl-item">
-<div class="tl-year">Jun 2025</div>
-<div class="tl-body">
-<h3 data-i18n="tl4.h3">Graduate Certificate · Cyber Threat Analytics &amp; Prevention · Penn State Great Valley</h3>
-<p data-i18n="tl4.p">Cyberattack analysis, cyber law, vulnerability assessment, threat detection and mitigation</p>
-</div>
-</div>
-<div class="tl-item">
-<div class="tl-year">Aug 2025</div>
-<div class="tl-body">
-<h3 data-i18n="tl5.h3">M.S., Information Science · Penn State</h3>
-<p data-i18n="tl5.p">GPA 3.73 · Capstone: Real-time clinical decision support using Kafka, Flink, Spark, and Deep Learning</p>
-</div>
-</div>
-<div class="tl-item">
-<div class="tl-year">2023 – Present</div>
-<div class="tl-body">
-<h3 data-i18n="tl6.h3">Research Assistant to Dr. Satish M. Srinivasan · The Pennsylvania State University</h3>
-<p data-i18n="tl6.p">AI in the workforce and labor markets · D.Eng. dissertation research</p>
-</div>
-</div>
-<div class="tl-item">
-<div class="tl-year">Aug 2025 – Present</div>
-<div class="tl-body">
-<h3 data-i18n="tl7.h3">D.Eng. Candidate · The Pennsylvania State University</h3>
-<p data-i18n="tl7.p">AI &amp; Workforce Analytics · Graduate Certificate in Engineering Leadership &amp; Innovation Management (in progress)</p>
-</div>
-</div>
-<div class="tl-item">
-<div class="tl-year">2020 – 2024</div>
-<div class="tl-body">
-<h3 data-i18n="tl8.h3">Patient Services Associate / Care Coordinator · Asembia · ASPN Pharmacies</h3>
-<p data-i18n="tl8.p">Specialty medication access coordination in full HIPAA compliance; reduced prescription processing time 30% and prior authorization turnaround 25%</p>
-</div>
-</div>
-<div class="tl-item">
-<div class="tl-year">2021</div>
-<div class="tl-body">
-<h3 data-i18n="tl9.h3">B.S., Information Sciences &amp; Technology · Penn State Abington</h3>
-<p data-i18n="tl9.p">GPA 3.89 · Concentration: Human Physiology &amp; Biology</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<h2 data-i18n="contact.h2">Contact</h2>
-<p class="contact-intro" data-i18n="contact.intro">
-I'm happy to talk about AI and labor markets, research collaboration,
-or graduate coursework in applied AI. Say hi.
-</p>
-<div class="contact-rows">
-<div class="contact-row">
-<span class="contact-label" data-i18n="contact.email">Email</span>
-<span class="contact-value">rpp5069@gmail.com</span>
-</div>
-<div class="contact-row">
-<span class="contact-label">LinkedIn</span>
-<span class="contact-value"><a href="https://www.linkedin.com/in/rickey-patel" target="_blank" rel="noopener">linkedin.com/in/rickey-patel</a></span>
-</div>
-<div class="contact-row">
-<span class="contact-label">GitHub</span>
-<span class="contact-value"><a href="https://github.com/rpp5069-cpu" target="_blank" rel="noopener">github.com/rpp5069-cpu</a></span>
-</div>
-<div class="contact-row">
-<span class="contact-label" data-i18n="contact.location">Location</span>
-<span class="contact-value">Scranton, PA</span>
-</div>
-<div class="contact-row">
-<span class="contact-label" data-i18n="contact.credentials">Credentials</span>
-<span class="contact-value"><a href="https://www.credly.com/users/rickey-patel" target="_blank" rel="noopener">credly.com/users/rickey-patel</a></span>
-</div>
-<div class="contact-row">
-<span class="contact-label" data-i18n="contact.affiliation">Affiliation</span>
-<span class="contact-value" data-i18n="contact.affiliation.val">The Pennsylvania State University · D.Eng. Program</span>
-</div>
-</div>
+<!-- RECENT ACTIVITY -->
+<section id="news">
+  <h2 data-i18n="news.h2">Recent Activity</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">2026</div>
+      <div class="tl-body">
+        <h3>Lightning Talk · NJBDA 2026</h3>
+        <p>Presenting "Architectural Patterns and Orchestration Frameworks in Multi-Agentic AI for Healthcare" at the New Jersey Big Data Alliance Annual Symposium</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2026</div>
+      <div class="tl-body">
+        <h3 data-i18n="tl1.h3">Two Papers Accepted · NABET 2026</h3>
+        <p data-i18n="tl1.p">Presenting "Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare" and "Impact and Current State of Artificial Intelligence in the Religious Market"</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Aug 2025</div>
+      <div class="tl-body">
+        <h3 data-i18n="tl7.h3">D.Eng. Candidate · The Pennsylvania State University</h3>
+        <p data-i18n="tl7.p">AI &amp; Workforce Analytics · Graduate Certificate in Engineering Leadership &amp; Innovation Management (in progress)</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2025</div>
+      <div class="tl-body">
+        <h3 data-i18n="tl2.h3">NABET Best Paper Award</h3>
+        <p data-i18n="tl2.p">AI's impact on healthcare workforce — co-authored with Dr. Satish M. Srinivasan</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 </main>
 
 <footer>
-<span>Rickey Patel · Penn State University</span>
-<span>Updated 2026</span>
+  <span>Rickey Patel · Penn State University</span>
+  <span>Updated 2026</span>
 </footer>
 
-<!-- Modal overlay -->
-<div id="rp-demo-overlay" role="dialog" aria-modal="true"
-     aria-label="Research Dashboard Demo"
-     onclick="if(event.target===this)rpCloseDemo()">
-  <div id="rp-demo-modal">
-    <div id="rp-demo-header">
-      <span id="rp-demo-label">D.ENG. RESEARCH DASHBOARD</span>
-      <button id="rp-demo-close" onclick="rpCloseDemo()"
-              aria-label="Close demo">&#x2715;</button>
-    </div>
-    <iframe id="rp-demo-frame"
-            title="D.Eng. Research Dashboard"
-            allow="fullscreen"
-            loading="lazy"
-            src=""></iframe>
-  </div>
-</div>
-
-<script>
-// ── Demo modal ────────────────────────────────────────────────────────────
-(function () {
-  var LABELS = {
-    gcp:  'JOB POSTINGS PIPELINE  ·  GCP / DATAFLOW / BIGQUERY',
-    rjld: 'RELIGIOUS JOB LISTINGS  ·  ROBERTA / VERTEX AI',
-    roar: 'HEALTHCARE AI CAPSTONE  ·  ROAR HPC / DUCKDB'
-  };
-  window.rpOpenDemo = function (btn) {
-    var tab = btn.dataset.tab, label = LABELS[tab] || 'RESEARCH DASHBOARD';
-    document.getElementById('rp-demo-label').textContent = 'D.ENG. RESEARCH DASHBOARD  ·  ' + label;
-    document.getElementById('rp-demo-frame').src = '/research-demo.html#' + tab;
-    document.getElementById('rp-demo-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-  window.rpCloseDemo = function () {
-    document.getElementById('rp-demo-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(function () { document.getElementById('rp-demo-frame').src = ''; }, 300);
-  };
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') rpCloseDemo(); });
-})();
-
-// ── Theme toggle ──────────────────────────────────────────────────────────
-(function () {
-  var saved = localStorage.getItem('rp-theme');
-  if (saved) document.documentElement.setAttribute('data-theme', saved);
-
-  function isDark() {
-    var t = document.documentElement.getAttribute('data-theme');
-    return t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  }
-  function syncIcon() {
-    document.getElementById('icon-moon').hidden = isDark();
-    document.getElementById('icon-sun').hidden  = !isDark();
-  }
-  window.toggleTheme = function () {
-    var next = isDark() ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('rp-theme', next);
-    syncIcon();
-  };
-  document.addEventListener('DOMContentLoaded', syncIcon);
-})();
-
-// ── i18n ──────────────────────────────────────────────────────────────────
-var I18N = {
-  en: {
-    'nav.research':    'Research',
-    'nav.publications':'Publications',
-    'nav.projects':    'Projects',
-    'nav.contact':     'Contact',
-    'hero.eyebrow':    'Penn State University · D.Eng. Candidate',
-    'hero.intro':      'I study how artificial intelligence is reshaping the workforce and labor markets. My work combines large-scale job posting data, NLP, and GCP-native pipelines to surface how AI is changing the skills employers need — and who gets left out. I hold an M.S. in Information Science from Penn State (2025) and am pursuing a D.Eng. advised by Dr. Satish M. Srinivasan, alongside a Graduate Certificate in Engineering Leadership and Innovation Management.',
-    'hero.award':      '2025 NABET Best Paper Award — AI\'s impact on healthcare workforce',
-    'research.h2':     'Research',
-    'research.p1':     'My doctoral research, advised by Dr. Satish M. Srinivasan, examines AI\'s role in labor market transformation. I build production ETL pipelines on GCP (BigQuery, Dataflow, Cloud Storage) to collect and analyze longitudinal employer skill demand data, applying BERTopic and LDA to extract occupational skill signals and identify curriculum gaps between what institutions teach and what the labor market actually needs.',
-    'research.p2':     'A parallel research thread focuses on the digital labor market for spiritual facilitation roles — chaplains, clergy, and pastoral staff. Drawing on IRS, Census, USDA, and SerpAPI data across national, state, and metro architectures, I found an inverse correlation of r = −0.402 (p = 0.038) between digital labor market participation and household income across 27 states, pointing to persistent structural inequities in who benefits from digital labor platforms.',
-    'research.p3':     'Earlier work on healthcare workforce equity — how clinical AI reshapes the skill profiles of roles from diagnostics to telemedicine — produced a 2025 NABET Best Paper Award co-authored with Dr. Srinivasan. That project also developed an XAI ethics-by-design framework with fairness audits and real-time streaming pipelines.',
-    'research.methods':'Methods & Tools',
-    'publications.h2': 'Publications',
-    'pub1.h3':         'Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare',
-    'pub1.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026',
-    'pub2.h3':         'Impact and Current State of Artificial Intelligence in the Religious Market',
-    'pub2.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · Presenting 2026',
-    'pub4.h3':         'Architectural Patterns and Orchestration Frameworks in Multi-Agentic AI for Healthcare',
-    'pub4.p':          'New Jersey Big Data Alliance (NJBDA) Annual Symposium',
-    'pub4.badge':      'Lightning Talk 2026',
-    'pub3.h3':         'Impact of AI in Healthcare',
-    'pub3.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · Co-authored with Dr. Satish M. Srinivasan',
-    'pub.forthcoming': 'Presenting 2026',
-    'pub.award':       '🏆 Best Paper Award',
-    'projects.h2':     'Projects',
-    'proj1.meta':      'GCP Pipeline · In Production',
-    'proj1.h3':        'Job Postings Intelligence Pipeline',
-    'proj1.desc':      'A fully GCP-native pipeline collecting job postings across CS, MBA, Data Analytics, and AI domains from USAJobs and Jooble, scoring relevance, and mapping every role to O*NET 24.2 competency frameworks. Migrated from a Google Colab notebook to Cloud Run, BigQuery, and Cloud Scheduler, with a nine-phase interactive analytics dashboard and GitHub Actions auto-deploy.',
-    'proj2.meta':      'Independent Research · 2024 – Present',
-    'proj2.h3':        'Digital Labor Market Analysis — Spiritual Facilitation',
-    'proj2.desc':      'A multi-source pipeline integrating IRS, Census, USDA, and SerpAPI data to track digital labor market participation among chaplains, pastors, clergy, and related roles across national, state, and metro geographies. Found an inverse correlation of r = −0.402 (p = 0.038) between digital labor ratio and household income across 27 states — revealing structural inequities in who benefits from digital labor platforms.',
-    'proj3.meta':      'Course Development · The Pennsylvania State University',
-    'proj3.h3':        'CSC 894: Healthcare AI Capstone',
-    'proj3.desc':      'A graduate-level Computer Science capstone course built around a real healthcare AI application deployed on Google Cloud Platform. Students work end-to-end with production GCP services, culminating in a deployed AI system with equity and clinical stewardship considerations built into the design rubric.',
-    'timeline.h2':     'Timeline',
-    'tl1.h3':          'Two Papers Accepted · NABET 2026',
-    'tl1.p':           'Presenting "Building Trust in AI: Ethical Deployment and Regulatory Oversight in Healthcare" and "Impact and Current State of Artificial Intelligence in the Religious Market"',
-    'tl2.h3':          'NABET Best Paper Award',
-    'tl2.p':           'AI\'s impact on healthcare workforce — co-authored with Dr. Satish M. Srinivasan',
-    'tl3.h3':          'Graduate Certificate · Business Process Integration · Penn State Great Valley',
-    'tl3.p':           'IT system analysis, architecture, design, and implementation for business process needs',
-    'tl4.h3':          'Graduate Certificate · Cyber Threat Analytics & Prevention · Penn State Great Valley',
-    'tl4.p':           'Cyberattack analysis, cyber law, vulnerability assessment, threat detection and mitigation',
-    'tl5.h3':          'M.S., Information Science · Penn State',
-    'tl5.p':           'GPA 3.73 · Capstone: Real-time clinical decision support using Kafka, Flink, Spark, and Deep Learning',
-    'tl6.h3':          'Research Assistant to Dr. Satish M. Srinivasan · The Pennsylvania State University',
-    'tl6.p':           'AI in the workforce and labor markets · D.Eng. dissertation research',
-    'tl7.h3':          'D.Eng. Candidate · The Pennsylvania State University',
-    'tl7.p':           'AI & Workforce Analytics · Graduate Certificate in Engineering Leadership & Innovation Management (in progress)',
-    'tl8.h3':          'Patient Services Associate / Care Coordinator · Asembia · ASPN Pharmacies',
-    'tl8.p':           'Specialty medication access coordination in full HIPAA compliance; reduced prescription processing time 30% and prior authorization turnaround 25%',
-    'tl9.h3':          'B.S., Information Sciences & Technology · Penn State Abington',
-    'tl9.p':           'GPA 3.89 · Concentration: Human Physiology & Biology',
-    'contact.h2':      'Contact',
-    'contact.intro':   'I\'m happy to talk about AI and labor markets, research collaboration, or graduate coursework in applied AI. Say hi.',
-    'contact.email':   'Email',
-    'contact.location':'Location',
-    'contact.credentials':'Credentials',
-    'contact.affiliation':'Affiliation',
-    'contact.affiliation.val':'The Pennsylvania State University · D.Eng. Program'
-  },
-
-  gu: {
-    'nav.research':    'સંશોધન',
-    'nav.publications':'પ્રકાશનો',
-    'nav.projects':    'પ્રોજેક્ટ',
-    'nav.contact':     'સંપર્ક',
-    'hero.eyebrow':    'Penn State University · D.Eng. ઉમેદવાર',
-    'hero.intro':      'હું અભ્યાસ કરું છું કે AI (કૃત્રિમ બુદ્ધિ) કઈ રીતે કાર્યયળ અને શ્રમ બજારોને આકાર આપી રહ્યું છે. મારું કામ મોટા-પાયા પર નોકરી-ડેટા, NLP, અને GCP પાઇપલાઇન વાપરીને, AI ને કારણે નિયોક્તાઓને જોઈતા skillsમાં બદલાવ — અને કોણ બહાર રહે — તે ઉજાગર કરે છે. Penn State (M.S., 2025), Dr. Satish M. Srinivasan ના માર્ગદર્શન હેઠળ D.Eng. કરું છું, સાથે Engineering Leadership and Innovation Management માં Graduate Certificate પણ.',
-    'hero.award':      '૨૦૨૫ NABET શ્રેષ્ઠ સંશોધન-પત્ર — આરોગ્ય સેવા કાર્યયળ પર AI ની અસર',
-    'research.h2':     'સંશોધન',
-    'research.p1':     'Dr. Satish M. Srinivasan ના માર્ગદર્શન હેઠળ, મારું ડૉક્ટરલ સંશોધન AI ની શ્રમ બજાર પરિવર્તનમાં ભૂમિકા તપાસે છે. GCP (BigQuery, Dataflow, Cloud Storage) પર ETL પાઇપલાઇન બનાવી, BERTopic અને LDA થી વ્યાવસાયિક skill signal અને curricular gaps ઓળખવામાં આવે છે.',
-    'research.p2':     'એક સમાંતર સંશોધન ધારા આધ્યાત્મિક સહાયતા ભૂમિકાઓ — chaplains, clergy, અને pastoral staff — ના ડિજિટલ શ્રમ બજાર પર ધ્યાન કેન્દ્રિત કરે છે. IRS, Census, USDA, અને SerpAPI ડેટાનો ઉપયોગ કરી, ૨૭ રાજ્યોમાં ડિજિટલ શ્રમ ભાગીદારી અને ઘરેલૂ આવક વચ્ચે r = −0.402 (p = 0.038) નો વિપરિત સંબંધ મેળવ્યો.',
-    'research.p3':     'આરોગ્ય સેવા કાર્યયળ સમાનતા પર અગાઉ કામ — clinical AI ડાયગ્નોસ્ટિક્સ થી ટેલિમેડિસિન સુધી ભૂમિકાઓના skill profilesને કઈ રીતે બદલે છે — ૨૦૨૫ NABET Best Paper Award Dr. Srinivasan સાથે આપ્યો. તે પ્રોજેક્ટમાં XAI ethics-by-design framework પણ બનાવેલી હતી.',
-    'research.methods':'પદ્ધતિઓ અને સાધનો',
-    'publications.h2': 'પ્રકાશનો',
-    'pub1.h3':         'AI માં વિશ્વાસ બાંધવો: આરોગ્ય સેવામાં નૈતિક ઉપયોગ અને નિયમનકારી દેખરેખ',
-    'pub1.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · ૨૦૨૬ માં રજૂ',
-    'pub2.h3':         'ધાર્મિક બજારમાં AI ની વર્તમાન સ્થિતિ અને અસર',
-    'pub2.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · ૨૦૨૬ માં રજૂ',
-    'pub4.h3':         'હેલ્થકેરમાં Multi-Agentic AI ના આર્કિટેક્ચરલ પેટર્ન અને ઓર્કેસ્ટ્રેશન ફ્રેમવર્ક',
-    'pub4.p':          'New Jersey Big Data Alliance (NJBDA) Annual Symposium',
-    'pub4.badge':      'Lightning Talk 2026',
-    'pub3.h3':         'આરોગ્ય સેવામાં AI ની અસર',
-    'pub3.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · Dr. Satish M. Srinivasan સાથે સહ-લેખન',
-    'pub.forthcoming': '૨૦૨૬ માં રજૂ',
-    'pub.award':       '🏆 શ્રેષ્ઠ સંશોધન-પત્ર',
-    'projects.h2':     'પ્રોજેક્ટ',
-    'proj1.meta':      'GCP Pipeline · ઉત્પાદનમાં',
-    'proj1.h3':        'નોકરી પોસ્ટિંગ ઇન્ટેલિજન્સ પાઇપલાઇન',
-    'proj1.desc':      'USAJobs અને Jooble થી CS, MBA, Data Analytics, અને AI domainsમાં નોકરી પોસ્ટિંગ એકઠ્ઠી કરતી, relevance score આપતી, અને દરેક ભૂમિકાને O*NET 24.2 સાથે map કરતી પૂરી-રીતે GCP-આધારિત pipeline. Cloud Run, BigQuery, અને Cloud Scheduler પર migrate કરાઈ, interactive analytics dashboard અને GitHub Actions auto-deploy સાથે.',
-    'proj2.meta':      'સ્વતંત્ર સંશોધન · ૨૦૨૪ – હાલ',
-    'proj2.h3':        'ડિજિટલ શ્રમ બજાર વિશ્લેષણ — આધ્યાત્મિક સહાયતા',
-    'proj2.desc':      'IRS, Census, USDA, અને SerpAPI ડેટાને જોડતી multi-source pipeline જે national, state, અને metro સ્તરે chaplains, pastors, clergy, અને સંબંધિત ભૂમિકાઓની ડિજિટલ શ્રમ ભાગીદારી track કરે છે. ૨૭ રાજ્યોમાં digital labor ratio અને ઘરેલૂ આવક વચ્ચે r = −0.402 (p = 0.038) નો વિપરિત સંબંધ મેળવ્યો.',
-    'proj3.meta':      'અભ્યાસક્રમ વિકાસ · The Pennsylvania State University',
-    'proj3.h3':        'CSC 894: Healthcare AI Capstone',
-    'proj3.desc':      'GCP પર deploy કરેલી વાસ્તવિક healthcare AI application આધારિત graduate-સ્તરીય Computer Science capstone અભ્યાસક્રમ. વિદ્યાર્થીઓ production GCP સેવાઓ સાથે end-to-end કામ કરે છે, અને design rubricમાં સમાનતા અને clinical stewardship વિચારો સાથે deploy કરેલ AI system બને છે.',
-    'timeline.h2':     'સમયરેખા',
-    'tl1.h3':          'બે સંશોધન-પત્ર સ્વીકૃત · NABET 2026',
-    'tl1.p':           '"AI માં વિશ્વાસ બાંધવો..." અને "ધાર્મિક બજારમાં AI ની વર્તમાન સ્થિતિ..." ૨૦૨૬ NABET Conference માં રજૂ',
-    'tl2.h3':          'NABET શ્રેષ્ઠ સંશોધન-પત્ર',
-    'tl2.p':           'AI ની આરોગ્ય સેવા કાર્યયળ પર અસર — Dr. Satish M. Srinivasan સાથે સહ-લેખન',
-    'tl3.h3':          'Graduate Certificate · Business Process Integration · Penn State Great Valley',
-    'tl3.p':           'ઉદ્યોગ-પ્રક્રિયા જરૂરિયાતો માટે IT સિસ્ટમ વિશ્લેષણ, architecture, design, અને implementation',
-    'tl4.h3':          'Graduate Certificate · Cyber Threat Analytics & Prevention · Penn State Great Valley',
-    'tl4.p':           'Cyberattack analysis, cyber law, vulnerability assessment, threat detection અને mitigation',
-    'tl5.h3':          'M.S., Information Science · Penn State',
-    'tl5.p':           'GPA 3.73 · Capstone: Kafka, Flink, Spark, અને Deep Learning વડે real-time clinical decision support',
-    'tl6.h3':          'Dr. Satish M. Srinivasan ના Research Assistant · The Pennsylvania State University',
-    'tl6.p':           'AI in the workforce and labor markets · D.Eng. dissertation research',
-    'tl7.h3':          'D.Eng. Candidate · The Pennsylvania State University',
-    'tl7.p':           'AI & Workforce Analytics · Graduate Certificate in Engineering Leadership & Innovation Management (ચાલુ)',
-    'tl8.h3':          'Patient Services Associate / Care Coordinator · Asembia · ASPN Pharmacies',
-    'tl8.p':           'પૂર્ણ HIPAA અનુપાલનમાં specialty medication access coordination; prescription processing ૩૦% અને prior authorization ૨૫% ઝડપી',
-    'tl9.h3':          'B.S., Information Sciences & Technology · Penn State Abington',
-    'tl9.p':           'GPA 3.89 · Concentration: Human Physiology & Biology',
-    'contact.h2':      'સંપર્ક',
-    'contact.intro':   'AI અને labor markets, સંશોધન સહયોગ, અથવા applied AI માં graduate અભ્યાસક્રમ વિશે વાત કરવા ખૂશ છું. નમસ્તે કહો.',
-    'contact.email':   'ઈ-મેઈલ',
-    'contact.location':'સ્થાન',
-    'contact.credentials':'પ્રમાણ-પત્ર',
-    'contact.affiliation':'સંસ્થા',
-    'contact.affiliation.val':'The Pennsylvania State University · D.Eng. કાર્યક્રમ'
-  },
-
-  hi: {
-    'nav.research':    'शोध',
-    'nav.publications':'प्रकाशन',
-    'nav.projects':    'परियोजनाएँ',
-    'nav.contact':     'संपर्क',
-    'hero.eyebrow':    'Penn State University · D.Eng. उम्मीदवार',
-    'hero.intro':      'मैं अध्ययन करता हूँ कि AI (कृत्रिम बुद्धि) किस प्रकार कार्यबल और श्रम बाजारों को आकार दे रहा है। मेरा कार्य बड़े पैमाने पर नौकरी-डेटा, NLP, और GCP-आधारित पाइपलाइनों को जोड़कर यह उजागर करता है कि AI के कारण नियोक्ताओं की आवश्यक दक्षताएँ कैसे बदल रही हैं — और कौन पीछे रह जाता है। Penn State (M.S., 2025), Dr. Satish M. Srinivasan के मार्गदर्शन में D.Eng. कर रहा हूँ, साथ ही Engineering Leadership and Innovation Management में Graduate Certificate भी।',
-    'hero.award':      '2025 NABET सर्वश्रेष्ठ शोध-पत्र — स्वास्थ्य सेवा कार्यबल पर AI का प्रभाव',
-    'research.h2':     'शोध',
-    'research.p1':     'Dr. Satish M. Srinivasan के मार्गदर्शन में, मेरा डॉक्टरल शोध श्रम बाजार परिवर्तन में AI की भूमिका की जाँच करता है। GCP (BigQuery, Dataflow, Cloud Storage) पर उत्पादन ETL पाइपलाइन बनाकर, BERTopic और LDA से व्यावसायिक कौशल संकेत निकाले जाते हैं और संस्थाएँ जो पढ़ाती हैं तथा श्रम बाजार को जो चाहिए, उनके बीच की खाई पहचानी जाती है।',
-    'research.p2':     'एक समानांतर शोध-धारा आध्यात्मिक सहायता भूमिकाओं — chaplains, clergy, और pastoral staff — के डिजिटल श्रम बाजार पर केंद्रित है। IRS, Census, USDA, और SerpAPI डेटा का उपयोग करते हुए, 27 राज्यों में डिजिटल श्रम भागीदारी और घरेलू आय के बीच r = −0.402 (p = 0.038) का विपरीत सहसंबंध मिला — जो संरचनात्मक असमानता की ओर इशारा करता है।',
-    'research.p3':     'स्वास्थ्य सेवा कार्यबल समानता पर पूर्व कार्य — कैसे clinical AI डायग्नोस्टिक्स से टेलीमेडिसिन तक भूमिकाओं के कौशल प्रोफाइल को बदलता है — ने Dr. Srinivasan के साथ 2025 NABET Best Paper Award दिलाया। उस परियोजना में fairness audits और real-time streaming pipelines के साथ XAI ethics-by-design framework भी विकसित की गई।',
-    'research.methods':'विधियाँ और उपकरण',
-    'publications.h2': 'प्रकाशन',
-    'pub1.h3':         'AI में विश्वास बनाना: स्वास्थ्य सेवा में नैतिक तैनाती और नियामक देखरेख',
-    'pub1.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · 2026 में प्रस्तुत',
-    'pub2.h3':         'धार्मिक बाजार में कृत्रिम बुद्धि की वर्तमान स्थिति और प्रभाव',
-    'pub2.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · 2026 में प्रस्तुत',
-    'pub4.h3':         'स्वास्थ्य सेवा में Multi-Agentic AI के आर्किटेक्चरल पैटर्न और ऑर्केस्ट्रेशन फ्रेमवर्क',
-    'pub4.p':          'New Jersey Big Data Alliance (NJBDA) Annual Symposium',
-    'pub4.badge':      'Lightning Talk 2026',
-    'pub3.h3':         'स्वास्थ्य सेवा में AI का प्रभाव',
-    'pub3.p':          'National Association for Business, Economics, and Technology (NABET) Annual Conference · Dr. Satish M. Srinivasan के साथ सह-लेखन',
-    'pub.forthcoming': '2026 में प्रस्तुत',
-    'pub.award':       '🏆 सर्वश्रेष्ठ शोध-पत्र',
-    'projects.h2':     'परियोजनाएँ',
-    'proj1.meta':      'GCP Pipeline · उत्पादन में',
-    'proj1.h3':        'नौकरी पोस्टिंग इंटेलिजेंस पाइपलाइन',
-    'proj1.desc':      'USAJobs और Jooble से CS, MBA, Data Analytics, और AI क्षेत्रों में नौकरी पोस्टिंग एकत्र करने, relevance score देने, और हर भूमिका को O*NET 24.2 से मानचित्रित करने वाली पूर्णतः GCP-आधारित पाइपलाइन। Cloud Run, BigQuery, और Cloud Scheduler पर माइग्रेट की गई, नौ-चरण इंटरैक्टिव analytics dashboard और GitHub Actions auto-deploy के साथ।',
-    'proj2.meta':      'स्वतंत्र शोध · 2024 – वर्तमान',
-    'proj2.h3':        'डिजिटल श्रम बाजार विश्लेषण — आध्यात्मिक सहायता',
-    'proj2.desc':      'IRS, Census, USDA, और SerpAPI डेटा को एकीकृत करने वाली multi-source pipeline जो राष्ट्रीय, राज्य और मेट्रो स्तर पर chaplains, pastors, clergy और संबंधित भूमिकाओं की डिजिटल श्रम भागीदारी को ट्रैक करती है। 27 राज्यों में digital labor ratio और घरेलू आय के बीच r = −0.402 (p = 0.038) का विपरीत सहसंबंध मिला।',
-    'proj3.meta':      'पाठ्यक्रम विकास · The Pennsylvania State University',
-    'proj3.h3':        'CSC 894: स्वास्थ्य सेवा AI Capstone',
-    'proj3.desc':      'Google Cloud Platform पर तैनात वास्तविक healthcare AI application पर आधारित graduate-स्तरीय Computer Science capstone पाठ्यक्रम। छात्र production GCP सेवाओं के साथ end-to-end कार्य करते हैं, जिसके परिणामस्वरूप design rubric में समानता और clinical stewardship विचारों के साथ एक तैनात AI system बनता है।',
-    'timeline.h2':     'समयरेखा',
-    'tl1.h3':          'दो शोध-पत्र स्वीकृत · NABET 2026',
-    'tl1.p':           '"AI में विश्वास बनाना..." और "धार्मिक बाजार में AI की वर्तमान स्थिति..." 2026 NABET Conference में प्रस्तुत',
-    'tl2.h3':          'NABET सर्वश्रेष्ठ शोध-पत्र पुरस्कार',
-    'tl2.p':           'स्वास्थ्य सेवा कार्यबल पर AI का प्रभाव — Dr. Satish M. Srinivasan के साथ सह-लेखन',
-    'tl3.h3':          'Graduate Certificate · Business Process Integration · Penn State Great Valley',
-    'tl3.p':           'व्यावसायिक प्रक्रिया आवश्यकताओं के लिए IT प्रणाली विश्लेषण, architecture, design, और implementation',
-    'tl4.h3':          'Graduate Certificate · Cyber Threat Analytics & Prevention · Penn State Great Valley',
-    'tl4.p':           'Cyberattack विश्लेषण, cyber law, vulnerability assessment, threat detection और mitigation',
-    'tl5.h3':          'M.S., Information Science · Penn State',
-    'tl5.p':           'GPA 3.73 · Capstone: Kafka, Flink, Spark और Deep Learning का उपयोग करते हुए real-time clinical decision support',
-    'tl6.h3':          'Dr. Satish M. Srinivasan के Research Assistant · The Pennsylvania State University',
-    'tl6.p':           'AI in the workforce and labor markets · D.Eng. dissertation research',
-    'tl7.h3':          'D.Eng. Candidate · The Pennsylvania State University',
-    'tl7.p':           'AI & Workforce Analytics · Graduate Certificate in Engineering Leadership & Innovation Management (प्रगति में)',
-    'tl8.h3':          'Patient Services Associate / Care Coordinator · Asembia · ASPN Pharmacies',
-    'tl8.p':           'पूर्ण HIPAA अनुपालन में specialty medication access coordination; prescription processing 30% और prior authorization 25% तेज',
-    'tl9.h3':          'B.S., Information Sciences & Technology · Penn State Abington',
-    'tl9.p':           'GPA 3.89 · Concentration: Human Physiology & Biology',
-    'contact.h2':      'संपर्क',
-    'contact.intro':   'AI और श्रम बाजारों, शोध सहयोग, या applied AI में स्नातक पाठ्यक्रम के बारे में बात करने में मुझे खुशी होगी। नमस्ते कहें।',
-    'contact.email':   'ईमेल',
-    'contact.location':'स्थान',
-    'contact.credentials':'प्रमाण-पत्र',
-    'contact.affiliation':'संस्था',
-    'contact.affiliation.val':'The Pennsylvania State University · D.Eng. कार्यक्रम'
-  }
-};
-
-var _lang = localStorage.getItem('rp-lang') || 'en';
-
-window.setLang = function (lang) {
-  _lang = lang;
-  localStorage.setItem('rp-lang', lang);
-  ['en','gu','hi'].forEach(function (l) {
-    var btn = document.getElementById('lang-' + l);
-    if (!btn) return;
-    btn.classList.toggle('active', l === lang);
-    btn.setAttribute('aria-pressed', l === lang ? 'true' : 'false');
-  });
-  document.querySelectorAll('[data-i18n]').forEach(function (el) {
-    var key = el.getAttribute('data-i18n');
-    var val = I18N[lang] && I18N[lang][key];
-    if (val !== undefined) el.textContent = val;
-  });
-};
-
-document.addEventListener('DOMContentLoaded', function () {
-  setLang(_lang);
-  // also set active lang button correctly on load
-  ['en','gu','hi'].forEach(function (l) {
-    var btn = document.getElementById('lang-' + l);
-    if (btn) btn.classList.toggle('active', l === _lang);
-  });
-});
-</script>
-
-</body></html>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pipelines &amp; Engineering — Rickey Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+  <a class="nav-name" href="index.html">Rickey Patel</a>
+  <ul class="nav-links">
+    <li><a href="research.html"  data-i18n="nav.research">Research</a></li>
+    <li><a href="pipelines.html" class="current" data-i18n="nav.engineering">Engineering</a></li>
+    <li><a href="teaching.html"  data-i18n="nav.teaching">Teaching</a></li>
+    <li><a href="contact.html"   data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-btn active" id="lang-en" onclick="setLang('en')" aria-pressed="true">EN</button>
+      <button class="lang-btn" id="lang-gu" onclick="setLang('gu')" aria-pressed="false">ગુ</button>
+      <button class="lang-btn" id="lang-hi" onclick="setLang('hi')" aria-pressed="false">हि</button>
+    </div>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg id="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="icon-sun"  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+</nav>
+
+<main>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="border-bottom:1px solid var(--border);">
+  <span class="eyebrow" data-i18n="eng.page.eyebrow">Production Engineering</span>
+  <h1 data-i18n="eng.page.h1">Pipelines &amp; Engineering</h1>
+  <p data-i18n="eng.page.desc">Production-grade cloud systems for collecting, enriching, and analyzing large-scale job market data — built on GCP, Apache Beam, and Vertex AI.</p>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<div class="projects-grid">
+
+  <!-- Job Postings Intelligence Pipeline -->
+  <div class="project-card" id="job-pipeline">
+    <p class="project-meta" data-i18n="proj1.meta">GCP Pipeline · In Production</p>
+    <h3 data-i18n="proj1.h3">Job Postings Intelligence Pipeline</h3>
+    <p data-i18n="proj1.desc">A fully GCP-native pipeline collecting job postings across CS, MBA, Data Analytics, and AI domains from USAJobs and Jooble, scoring relevance, and mapping every role to O*NET 24.2 competency frameworks. Migrated from a Google Colab prototype to Cloud Run, BigQuery, and Cloud Scheduler, with a nine-phase interactive analytics dashboard and GitHub Actions auto-deploy.</p>
+
+    <p class="methods-label">System Architecture</p>
+    <div class="arch-flow">
+      <span class="arch-node">USAJobs + Jooble</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Cloud Run</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Pub/Sub</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Dataflow (Beam)</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">BigQuery</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Vertex AI AutoML</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">BQ Proxy</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Dashboard</span>
+    </div>
+
+    <div class="project-links">
+      <a class="project-link" href="https://github.com/rpp5069-cpu/job-pipeline" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="tags" style="margin-bottom:0.75rem;">
+      <span class="tag">Cloud Run</span><span class="tag">Pub/Sub</span>
+      <span class="tag">Dataflow</span><span class="tag">BigQuery</span>
+      <span class="tag">Vertex AI</span><span class="tag">Apache Beam</span>
+      <span class="tag">O*NET 24.2</span><span class="tag">Python</span><span class="tag">Plotly</span>
+    </div>
+    <button class="rp-demo-btn" data-tab="gcp" onclick="rpOpenDemo(this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Live Demo
+    </button>
+  </div>
+
+  <!-- RJLD -->
+  <div class="project-card" id="rjld">
+    <p class="project-meta" data-i18n="proj2.meta">Independent Research · 2024 – Present</p>
+    <h3 data-i18n="proj2.h3">Religious Job Listings Dataset (RJLD)</h3>
+    <p data-i18n="proj2.desc">A multi-source pipeline integrating IRS, Census, USDA, and SerpAPI data to track digital labor market participation among chaplains, pastors, clergy, and related roles. Features a fine-tuned RoBERTa multi-label classifier (four thematic labels: community_service, campus_ministry, spiritual_care, digital_facilitation) with an inter-annotator agreement gate (Cohen's κ ≥ 0.6) before model training.</p>
+
+    <p class="methods-label">System Architecture</p>
+    <div class="arch-flow">
+      <span class="arch-node">IRS + Census + USDA + SerpAPI</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Cloud Run</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Pub/Sub</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Dataflow (Beam)</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">BigQuery</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Annotation Gate (κ ≥ 0.6)</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">RoBERTa Fine-tune</span>
+      <span class="arch-arrow">→</span>
+      <span class="arch-node">Vertex AI</span>
+    </div>
+
+    <div class="tags" style="margin-bottom:0.75rem;">
+      <span class="tag">RoBERTa</span><span class="tag">Vertex AI</span>
+      <span class="tag">BigQuery</span><span class="tag">SerpAPI</span>
+      <span class="tag">NLP</span><span class="tag">Cohen's κ</span>
+      <span class="tag">GeoPandas</span><span class="tag">Python</span>
+    </div>
+    <button class="rp-demo-btn" data-tab="rjld" onclick="rpOpenDemo(this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Live Demo
+    </button>
+  </div>
+
+  <!-- ROAR HPC -->
+  <div class="project-card" id="roar">
+    <p class="project-meta" data-i18n="proj3.meta">PSU ROAR HPC · SLURM</p>
+    <h3 data-i18n="proj3.h3">Job Pipeline — ROAR HPC Variant</h3>
+    <p data-i18n="proj3.desc">The GCP pipeline adapted for Penn State's ROAR supercomputer cluster. Replaces every managed cloud service with a local equivalent: DuckDB for BigQuery, POSIX file queue for Pub/Sub, SLURM sbatch for Cloud Scheduler, scikit-learn RandomForest for Vertex AI AutoML, and a Streamlit dashboard for Cloud Run.</p>
+    <div class="tags">
+      <span class="tag">DuckDB</span><span class="tag">SLURM</span>
+      <span class="tag">Streamlit</span><span class="tag">scikit-learn</span>
+      <span class="tag">Python</span><span class="tag">HPC</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+  <span>Rickey Patel · Penn State University</span>
+  <span>Updated 2026</span>
+</footer>
+
+<!-- Demo modal -->
+<div id="rp-demo-overlay" role="dialog" aria-modal="true" aria-label="Research Dashboard Demo" onclick="if(event.target===this)rpCloseDemo()">
+  <div id="rp-demo-modal">
+    <div id="rp-demo-header">
+      <span id="rp-demo-label">D.ENG. RESEARCH DASHBOARD</span>
+      <button id="rp-demo-close" onclick="rpCloseDemo()" aria-label="Close demo">&#x2715;</button>
+    </div>
+    <iframe id="rp-demo-frame" title="D.Eng. Research Dashboard" allow="fullscreen" loading="lazy" src=""></iframe>
+  </div>
+</div>
+
+<script src="site.js"></script>
+</body>
+</html>

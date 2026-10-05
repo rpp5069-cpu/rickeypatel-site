@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Teaching &amp; Pedagogy — Rickey Patel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+  <a class="nav-name" href="index.html">Rickey Patel</a>
+  <ul class="nav-links">
+    <li><a href="research.html"  data-i18n="nav.research">Research</a></li>
+    <li><a href="pipelines.html" data-i18n="nav.engineering">Engineering</a></li>
+    <li><a href="teaching.html"  class="current" data-i18n="nav.teaching">Teaching</a></li>
+    <li><a href="contact.html"   data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-switcher" role="group" aria-label="Language">
+      <button class="lang-btn active" id="lang-en" onclick="setLang('en')" aria-pressed="true">EN</button>
+      <button class="lang-btn" id="lang-gu" onclick="setLang('gu')" aria-pressed="false">ગુ</button>
+      <button class="lang-btn" id="lang-hi" onclick="setLang('hi')" aria-pressed="false">हि</button>
+    </div>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg id="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="icon-sun"  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+</nav>
+
+<main>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="border-bottom:1px solid var(--border);">
+  <span class="eyebrow" data-i18n="teach.page.eyebrow">Curriculum &amp; Pedagogy</span>
+  <h1 data-i18n="teach.page.h1">Teaching &amp; Pedagogy</h1>
+  <p data-i18n="teach.page.desc">Graduate-level course design and ethics framework development at the intersection of AI systems and human-centered engineering.</p>
+</section>
+
+<!-- CSC 894 -->
+<section id="csc894">
+  <h2>Course Spotlight</h2>
+
+  <div class="course-block">
+    <span class="pillar-label" data-i18n="csc894.label">Graduate Course · Penn State Great Valley</span>
+    <h3 data-i18n="csc894.h3">CSC 894: Healthcare AI Capstone</h3>
+    <p data-i18n="csc894.desc">A graduate-level Computer Science capstone built around a real healthcare AI application deployed end-to-end on Google Cloud Platform. Students move through the full production arc — data ingestion, model training, deployment, and monitoring — with equity and clinical stewardship considerations embedded directly in the design rubric.</p>
+    <ul class="course-detail-list">
+      <li>End-to-end GCP deployment: Cloud Run, BigQuery, Vertex AI, and IAM configuration</li>
+      <li>Clinical Stewardship Rubric with mandatory bias audit milestone at midterm</li>
+      <li>Real patient-outcome data with a de-identification pipeline built in the first sprint</li>
+      <li>Final deliverable: a deployed AI system with a live monitoring dashboard and model card</li>
+    </ul>
+    <div class="tags" style="margin-top:1rem;">
+      <span class="tag">GCP</span><span class="tag">Vertex AI</span>
+      <span class="tag">Healthcare AI</span><span class="tag">Instructional Design</span>
+      <span class="tag">XAI / SHAP</span><span class="tag">Clinical Stewardship</span>
+    </div>
+  </div>
+</section>
+
+<!-- ETHICS FRAMEWORK -->
+<section id="ethics">
+  <h2>Ethics Framework</h2>
+
+  <div class="framework-block">
+    <span class="pillar-label" data-i18n="ethics.label">Ethics Framework</span>
+    <h3 data-i18n="ethics.h3">Clinical Stewardship &amp; Design Equity Rubric</h3>
+    <p data-i18n="ethics.desc">Developed as part of the CSC 894 capstone and informed by Engineering Leadership &amp; Innovation Management training, this rubric operationalizes XAI ethics-by-design. It provides structured evaluation criteria for fairness audits, model explainability, and real-time pipeline oversight — translating abstract AI ethics principles into measurable engineering deliverables.</p>
+  </div>
+
+  <ul class="course-detail-list" style="margin-bottom:2rem;">
+    <li><strong>Explainability:</strong> SHAP-based feature attribution required at inference time for every model submission</li>
+    <li><strong>Fairness audit:</strong> Demographic parity and equalized odds checks must pass before deployment milestone</li>
+    <li><strong>Stewardship:</strong> Real-time monitoring hooks for distribution shift detection wired into the production pipeline</li>
+    <li><strong>Transparency:</strong> Model card and data sheet required for every final submission</li>
+  </ul>
+
+  <div class="course-block">
+    <span class="pillar-label" data-i18n="engr.label">Certificate Program</span>
+    <h3 data-i18n="engr.h3">Engineering Leadership &amp; Innovation Management</h3>
+    <p data-i18n="engr.desc">Currently pursuing this Graduate Certificate alongside the D.Eng. program at Penn State Great Valley. Focuses on translating advanced engineering execution into strategic organizational leadership — directly informing the design of the Clinical Stewardship Rubric and CSC 894 curriculum.</p>
+    <div class="tags" style="margin-top:0.75rem;">
+      <span class="tag">Penn State Great Valley</span>
+      <span class="tag">In Progress</span>
+      <span class="tag">Engineering Leadership</span>
+      <span class="tag">Innovation Management</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>Rickey Patel · Penn State University</span>
+  <span>Updated 2026</span>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
