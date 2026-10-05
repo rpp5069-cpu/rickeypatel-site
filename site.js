@@ -184,7 +184,7 @@ var I18N = {
     'csc894.desc':  'A graduate-level Computer Science capstone built around HealthRiskAI — a fictional application that processes healthcare claims data through a GCP pipeline. Students move through the full production arc — data ingestion, model training, deployment, and monitoring — with HIPAA compliance, equity, and clinical stewardship considerations embedded directly in the design rubric.',
     'ethics.label': 'Ethics Framework',
     'ethics.h3':    'Clinical Stewardship & Design Equity Rubric',
-    'ethics.desc':  'Developed as part of the CSC 894 capstone and informed by Engineering Leadership & Innovation Management training, this rubric operationalizes XAI ethics-by-design. It provides structured evaluation criteria for fairness audits, model explainability, and real-time pipeline oversight — translating abstract AI ethics principles into measurable engineering deliverables.',
+    'ethics.desc':  'Developed as part of the CSC 894 capstone, this rubric operationalizes XAI ethics-by-design. It provides structured evaluation criteria for fairness audits, model explainability, and real-time pipeline oversight — translating abstract AI ethics principles into measurable engineering deliverables.',
     'engr.label':   'Certificate Program',
     'engr.h3':      'Engineering Leadership & Innovation Management',
     'engr.desc':    'Currently pursuing this Graduate Certificate alongside the Doctor of Engineering program at Penn State. Focuses on translating advanced engineering execution into strategic organizational leadership — directly informing the design of the Clinical Stewardship Rubric and CSC 894 curriculum.',
