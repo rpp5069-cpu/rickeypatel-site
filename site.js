@@ -431,27 +431,34 @@ var I18N = {
 // ── Language switching ────────────────────────────────────────────────────
 var _lang = localStorage.getItem('rp-lang') || 'en';
 
-window.setLang = function (lang) {
-  _lang = lang;
-  localStorage.setItem('rp-lang', lang);
-  document.documentElement.lang = lang;
+function _updateLangButtons(lang) {
   ['en','gu','hi'].forEach(function (l) {
     var btn = document.getElementById('lang-' + l);
     if (!btn) return;
     btn.classList.toggle('active', l === lang);
     btn.setAttribute('aria-pressed', l === lang ? 'true' : 'false');
   });
-  document.querySelectorAll('[data-i18n]').forEach(function (el) {
-    var key = el.getAttribute('data-i18n');
-    var val = I18N[lang] && I18N[lang][key];
-    if (val !== undefined) el.textContent = val;
-  });
+}
+
+window.setLang = function (lang) {
+  _lang = lang;
+  localStorage.setItem('rp-lang', lang);
+  _updateLangButtons(lang);
+
+  // Trigger Google Translate via its hidden select element
+  function doTranslate() {
+    var select = document.querySelector('.goog-te-combo');
+    if (!select) { setTimeout(doTranslate, 300); return; }
+    select.value = lang === 'en' ? '' : lang;
+    select.dispatchEvent(new Event('change'));
+  }
+  doTranslate();
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  setLang(_lang);
-  ['en','gu','hi'].forEach(function (l) {
-    var btn = document.getElementById('lang-' + l);
-    if (btn) btn.classList.toggle('active', l === _lang);
-  });
+  _updateLangButtons(_lang);
+  // Auto-apply saved language after Google Translate loads
+  if (_lang !== 'en') {
+    setTimeout(function () { window.setLang(_lang); }, 1200);
+  }
 });

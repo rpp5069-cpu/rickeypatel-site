@@ -358,3 +358,10 @@ footer {
 .hero-body { flex: 1; min-width: 0; }
 .hero-avatar { flex-shrink: 0; width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: top center; border: 3px solid var(--border, #e2e8f0); align-self: flex-start; margin-top: 0.5rem; }
 @media (max-width: 600px) { .hero { flex-direction: column-reverse; align-items: center; } .hero-avatar { width: 120px; height: 120px; } }
+
+/* ── Hide Google Translate native chrome ── */
+#google_translate_element            { display: none !important; }
+.goog-te-banner-frame                { display: none !important; }
+.skiptranslate                       { display: none !important; }
+body                                 { top: 0 !important; }
+.goog-te-gadget                      { display: none !important; }
